@@ -13,3 +13,10 @@ class FormSubmission(models.Model):
 
     def get_absolute_url(self):
         return reverse('page_preview', args=[self.slug])
+    
+
+class Modelnames(models.Model):
+    modelname = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.modelname
