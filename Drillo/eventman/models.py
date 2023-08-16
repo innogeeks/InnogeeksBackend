@@ -4,7 +4,10 @@ from django.urls import reverse
 class FormSubmission(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
+    shortDesc = models.TextField()
     message = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     url = models.SlugField(unique=True, max_length=255)
 
     def save(self, *args, **kwargs):
@@ -15,8 +18,8 @@ class FormSubmission(models.Model):
         return reverse('page_preview', args=[self.slug])
     
 
-class Modelnames(models.Model):
-    modelname = models.CharField(max_length=100)
+# class Modelnames(models.Model):
+#     modelname = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.modelname
+#     def __str__(self):
+#         return self.modelname
