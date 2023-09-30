@@ -32,7 +32,7 @@ def page_preview(request,url):
     total_registered = event_details(event_name)['event']['total_registered']
     if (request.user.is_authenticated and event_name in request.user.events_participated.split()):
         registered = True
-    return render(request, 'rendered_page.html', {'submission': submission, 'user': request.user, 'registration_count': total_registered, 'registered': registered, 'other_events': other_events()})
+    return render(request, 'rendered-page.html', {'submission': submission, 'user': request.user, 'registration_count': total_registered, 'registered': registered, 'other_events': other_events()})
 
 def register(request, event):
     if(request.user.is_authenticated):
