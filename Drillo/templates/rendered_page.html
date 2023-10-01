@@ -27,6 +27,28 @@
         <link rel="stylesheet" href="/static/css/responsive.css">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/static/css/custom.css">
+
+        <style>
+            html{
+                scroll-behavior: smooth;
+            }
+            @media screen and (max-width: 800px) {
+                .aboutImage{
+                    display: none;
+                }
+            }
+            @media screen and (min-width: 800px) {
+                .aboutText{
+                    margin-top: 10%;
+                }
+            }
+            @media screen and (max-width: 500px) {
+                .importantInfo{
+                    flex-direction: column;
+                }
+            }
+
+        </style>
     
     
     </head>
@@ -42,30 +64,25 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-                        <a class="navbar-brand" href="index.html"><img src="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" class="logo" alt="" style="width: 250px;height: 80px;"></a>
+                        <a class="navbar-brand" href="https://www.innogeeks.in"><img src="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" class="logo" alt="" style="width: 250px;height: 80px;"></a>
                     </div>
                     <!-- End Header Navigation -->
     
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="contact-us.html">Profile</a></li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                          </li>
                           {% if (registered == false) %}
                           <li class="nav-item">
                             <a class="nav-link" href="/event/register/{{submission.name}}">Register</a>
                           </li>
                           {% endif %}
+                          {% if (user.username)%}
+                          <li class="nav-item"><a class="nav-link" href="/user/dashboard">User {{user.username}}</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+                          {% else %}
+                          <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+                          {% endif %}
                         </ul>
-                        <!-- {% if(user.username) %}
-                          <a class="btn btn-outline-secondary me-2" href="/user/dashboard">Dashboard</a>
-                          <p class="btn btn-dark mt-3 me-2">Logged in as <span class="fw-bold">{{user.username}}</span></p>
-                          <a class="btn btn-danger" href="/user/logout">Logout</a>
-                        {% else %}
-                          <a class="btn btn-outline-success" href="/user/login">Login</a>
-                        {% endif %} -->
                       </div> 
                 </div>
             </nav>
@@ -84,12 +101,13 @@
             </div>
         </div>
         <!-- End Top Search -->
-    
+   
         <!-- Start Slider -->
         <div id="slides-shop" class="cover-slides">
             <ul class="slides-container">
+                {% for i in carousel %}
                 <li class="text-center">
-                    <img src="/static/images/" alt="">
+                    <img src={{i}} alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -106,42 +124,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="text-center">
-                    <img src="/static/images/" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>{{submission.name}} <br> by Innogeeks</strong></h1>
-                                <p class="m-b-40">{{submission.shortDesc}}</p>
-                                <p>{% if(registered) %}
-                                    <p class="btn hvr-hover">Already Registered</p>
-                                  {% else %}
-                                  <a class="btn hvr-hover" href="/event/register/{{submission.name}}"
-                                    >Register Now</a
-                                  >
-                                  {% endif %}</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="text-center">
-                    <img src="/static/images/" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>{{submission.name}} <br> by Innogeeks</strong></h1>
-                                <p class="m-b-40">{{submission.shortDesc}}</p>
-                                <p>{% if(registered) %}
-                                    <p class="btn hvr-hover">Already Registered</p>
-                                  {% else %}
-                                  <a class="btn hvr-hover" href="/event/register/{{submission.name}}"
-                                    >Register Now</a
-                                  >
-                                  {% endif %}</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                {% endfor %}
             </ul>
             <div class="slides-navigation">
                 <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -151,31 +134,32 @@
         <!-- End Slider -->
     
         <!-- Start Categories  -->
-        <div class="categories-shop">
+        <div class="categories-shop" id="about">
             <div class="container">
-                <center><h1><strong>About Event</strong></h1></center> 
-                {{submission.message}}
+                <center><h1 style="margin-bottom: 2%;"><strong>About {{submission.name}}</strong></h1></center> 
+                <div style="display: flex;">
+                    <p class="aboutText" style="overflow-wrap: break-word; word-break: break-word; text-align: justify; margin-right: 5%;">{{submission.message}}</p>
+                    <img class="aboutImage" src={{aboutImage}} alt="">
+                </div>
             </div>
         </div>
         <!-- End Categories -->
         
+
+        {% if(sponsors) %}
         <div class="box-add-products">
             <div class="container">
-                <center><h1><strong>OUR SPONSORS</strong></h1></center> 
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="offer-box-products">
-                            <img class="img-fluid" src="/static/images/add-img-01.jpg" alt="" />
+                <center><h1 style="margin-bottom: 5%;"><strong>OUR SPONSORS</strong></h1></center> 
+                <center><div class="row" style="display: flex; justify-content: center; align-items: center;">
+                    {% for i in sponsors%}
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                                <img class="img-fluid" src={{i}} alt="sponsors" style="width: 50%; margin: 5%;"/>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="offer-box-products">
-                            <img class="img-fluid" src="/static/images/add-img-02.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
+                    {% endfor%}
+                </div></center>
             </div>
         </div>
+        {% endif %}
     
     
         <!-- Start Blog  -->
@@ -184,80 +168,23 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="title-all text-center">
-                            <h1>Chief Guests</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="blog-box">
-                            <div class="blog-img">
-                                <img class="img-fluid" src="/static/images/blog-img.jpg" alt="" />
-                            </div>
-                            <div class="blog-content">
-                                <!-- <div class="title-blog">
-                                    <h3>Fusce in augue non nisi fringilla</h3>
-                                    <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                                </div> -->
-                                <ul class="option-blog">
-                                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="blog-box">
-                            <div class="blog-img">
-                                <img class="img-fluid" src="/static/images/blog-img-01.jpg" alt="" />
-                            </div>
-                            <div class="blog-content">
-                                <!-- <div class="title-blog">
-                                    <h3>Fusce in augue non nisi fringilla</h3>
-                                    <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                                </div> -->
-                                <ul class="option-blog">
-                                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="blog-box">
-                            <div class="blog-img">
-                                <img class="img-fluid" src="/static/images/blog-img-02.jpg" alt="" />
-                            </div>
-                            <div class="blog-content">
-                                <ul class="option-blog">
-                                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
+                            <h1>Important Information</h1>
+                            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations start</h3><br>{{submission.start_date}}</center></div>
+                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations ends</h3><br>{{submission.end_date}}</center></div>
+                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Total Number of Registrations</h3><br>{{registration_count}}</center></div>
                             </div>
                         </div>
                     </div>
                 </div>
+                    
             </div>
         </div>
         <!-- End Blog  -->
     
-
-        <!-- Start Footer  -->
-        <footer>
-            <div class="footer-main">
-                <div class="container">
-                    <hr>
-            </div>
-        </footer>
-        <!-- End Footer  -->
-    
         <!-- Start copyright  -->
         <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. &copy; 2023 <a href="#"></a> Design By :
+            <p class="footer-company">All Rights Reserved. &copy; 2023 Made with ❤️ by:
                 <a href="https://innogeeks.in">Team Innogeeks</a></p>
         </div>
         <!-- End copyright  -->

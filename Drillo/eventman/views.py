@@ -30,9 +30,12 @@ def page_preview(request,url):
     event_name = submission.name
     registered = False
     total_registered = event_details(event_name)['event']['total_registered']
+    about = event_details(event_name)['event']['about']
+    sponsor = event_details(event_name)['event']['sponsor']
+    crousel = event_details(event_name)['event']['crousel']
     if (request.user.is_authenticated and event_name in request.user.events_participated.split()):
         registered = True
-    return render(request, 'rendered_page.html', {'submission': submission, 'user': request.user, 'registration_count': total_registered, 'registered': registered, 'other_events': other_events()})
+    return render(request, 'rendered_page.html', {'submission': submission, 'user': request.user, 'registration_count': total_registered, 'registered': registered, 'other_events': other_events(), 'sponsors': sponsor,"carousel": crousel, "aboutImage": about})
 
 def register(request, event):
     if(request.user.is_authenticated):
@@ -62,7 +65,10 @@ def event_details(event_name):
         'total_registered': 0,
         'created_by': "",
         "start_date": "",
-        "end_date": ""
+        "end_date": "",
+        "sponsor": [], 
+        "about": "",
+        "crousel": [],
     }, 'user': []}
     users_event_list = User.objects.all().values_list('username', 'events_participated')
     event_info = FormSubmission.objects.get(name=event_name)
@@ -70,6 +76,9 @@ def event_details(event_name):
     event_detail['event']['created_by'] = event_info.email
     event_detail['event']['start_date'] = event_info.start_date
     event_detail['event']['end_date'] = event_info.end_date
+    event_detail['event']['about'] = event_info.about
+    event_detail['event']['sponsor'] = event_info.sponsors.split(",")
+    event_detail['event']['crousel'] = event_info.crousel.split(",")
     for user_event in users_event_list:
         single_user_details = {
             'username': "",
