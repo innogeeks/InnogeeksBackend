@@ -12,7 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-21=+!uuy3k_c&osd)gi7k_r1dd%)h9iz6g_26e%pg9i&ba7=5q'
+# SECRET_KEY = 'django-insecure-21=+!uuy3k_c&osd)gi7k_r1dd%)h9iz6g_26e%pg9i&ba7=5q'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
@@ -89,10 +90,21 @@ WSGI_APPLICATION = 'drillo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'innodb',
+        'USER': 'varun',
+        'PASSWORD': '1010@Varun',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
 
