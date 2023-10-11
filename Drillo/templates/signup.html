@@ -11,7 +11,7 @@
     <div class="flex justify-center items-center h-96 mt-24">
       <form class="flex flex-col justify-center w-full rounded-md w-4/5 md:w-2/3 lg:w-1/3 justify-center items-center shadow-xl border-2 border-gray-100" method="post">
         <h1 class="mb-9 text-2xl mt-5">SignUp Form</h1>
-        {% if(msg != "") %}
+        {% if msg != "" %}
           <p class="mb-5 bg-red-200 p-3 rounded-md m-3">{{msg}}</p>
         {% endif %}
         {{form.username}} {{form.email}}<p style="font-size: x-small; padding: 2%; margin: 4% 4% 0% 4%;"> Password should be 8 characters long.<br> Which contains one special character, atleast one uppercaes character and should contain numerics</p> {{form.password1}} {{form.password2}} {{form.branch}} {{form.library_ID}} {{form.github}}
