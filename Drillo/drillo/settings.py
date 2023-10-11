@@ -54,6 +54,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://13.235.134.84:8001'
+]
+
 ROOT_URLCONF = 'drillo.urls'
 
 TEMPLATES = [
