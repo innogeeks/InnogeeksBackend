@@ -26,6 +26,7 @@ ALLOWED_HOSTS = os.environ.get('HOSTS').split(' ')
 INSTALLED_APPS = [
     'unfold',
     'storages',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -129,10 +131,6 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
 
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 AWS_ACCESS_KEY_ID = os.environ.get('AMAZON_ACCESS_KEY')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AMAZON_SECRET_KEY')
