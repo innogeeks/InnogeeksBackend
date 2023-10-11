@@ -20,15 +20,15 @@
         <link rel="apple-touch-icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png">
     
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-        <!-- Site CSS -->
-        <link rel="stylesheet" href="/static/css/style.css">
-        <!-- Responsive CSS -->
-        <link rel="stylesheet" href="/static/css/responsive.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/static/css/custom.css">
+        <link rel="stylesheet" href="{{ static('css/bootstrap.min.css') }}">
+      <!-- Site CSS -->
+        <link rel="stylesheet" href="{{ static('css/style.css') }}">
+      <!-- Responsive CSS -->
+        <link rel="stylesheet" href="{{ static('css/responsive.css') }}">
+      <!-- Custom CSS -->
+        <link rel="stylesheet" href="{{ static('css/custom.css') }}">
 
-        <style>
+       <style>
             html{
                 scroll-behavior: smooth;
             }
@@ -71,12 +71,12 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                          {% if (registered == false) %}
+                          {% if registered %}
                           <li class="nav-item">
                             <a class="nav-link" href="/event/register/{{submission.name}}">Register</a>
                           </li>
                           {% endif %}
-                          {% if (user.username)%}
+                          {% if user.username %}
                           <li class="nav-item"><a class="nav-link" href="/user/dashboard">User {{user.username}}</a></li>
                           <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
                           {% else %}
@@ -113,13 +113,15 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>{{submission.name}} <br> by Innogeeks</strong></h1>
                                 <p class="m-b-40">{{submission.shortDesc}}</p>
-                                <p>{% if(registered) %}
+                                {% if registered %}
+                                <p>
                                     <p class="btn hvr-hover">Already Registered</p>
                                   {% else %}
                                   <a class="btn hvr-hover" href="/event/register/{{submission.name}}"
                                     >Register Now</a
                                   >
-                                  {% endif %}</p>
+                                  </p>
+                                  {% endif %}
                             </div>
                         </div>
                     </div>
@@ -146,16 +148,16 @@
         <!-- End Categories -->
         
 
-        {% if(sponsors) %}
+        {% if sponsors %}
         <div class="box-add-products">
             <div class="container">
                 <center><h1 style="margin-bottom: 5%;"><strong>OUR SPONSORS</strong></h1></center> 
                 <center><div class="row" style="display: flex; justify-content: center; align-items: center;">
-                    {% for i in sponsors%}
+                    {% for i in sponsors %}
                         <div class="col-lg-4 col-md-4 col-sm-6">
                                 <img class="img-fluid" src={{i}} alt="sponsors" style="width: 50%; margin: 5%;"/>
                         </div>
-                    {% endfor%}
+                    {% endfor %}
                 </div></center>
             </div>
         </div>
@@ -192,30 +194,24 @@
         <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
     
         <!-- ALL JS FILES -->
-        <script src="/static/js/jquery-3.2.1.min.js"></script>
-        <script src="/static/js/popper.min.js"></script>
-        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="{{ static('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ static('js/popper.min.js') }}"></script>
+        <script src="{{ static('js/bootstrap.min.js') }}"></script>
         <!-- ALL PLUGINS -->
-        <script src="/static/js/jquery.superslides.min.js"></script>
-        <script src="/static/js/bootstrap-select.js"></script>
-        <script src="/static/js/inewsticker.js"></script>
-        <script src="/static/js/bootsnav.js."></script>
-        <script src="/static/js/images-loded.min.js"></script>
-        <script src="/static/js/isotope.min.js"></script>
-        <script src="/static/js/owl.carousel.min.js"></script>
-        <script src="/static/js/baguetteBox.min.js"></script>
-        <script src="/static/js/form-validator.min.js"></script>
-        <script src="/static/js/contact-form-script.js"></script>
-        <script src="/static/js/custom.js"></script>
+        <script src="{{ static('js/jquery.superslides.min.js') }}"></script>
+        <script src="{{ static('js/bootstrap-select.js') }}"></script>
+        <script src="{{ static('js/inewsticker.js') }}"></script>
+        <script src="{{ static('js/bootsnav.js') }}"></script>
+        <script src="{{ static('js/images-loded.min.js') }}"></script>
+        <script src="{{ static('js/isotope.min.js') }}"></script>
+        <script src="{{ static('js/owl.carousel.min.js') }}"></script>
+        <script src="{{ static('js/baguetteBox.min.js') }}"></script>
+        <script src="{{ static('js/form-validator.min.js') }}"></script>
+        <script src="{{ static('js/contact-form-script.js') }}"></script>
+        <script src="{{ static('js/custom.js') }}"></script>
     </body>
     
     </html>
-
-    <!-- script -->
-    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/static/bower_components/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
-    <script src="\static\main.js"></script>
 
 </body>
 </html>
