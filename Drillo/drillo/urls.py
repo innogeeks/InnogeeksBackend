@@ -10,4 +10,7 @@ urlpatterns = [
     path('event/', include('eventman.urls')),
     path('user/', include('user.urls')),
     path('', views.home, name='home'),
+    
+    path('recruitment/', include('recruitment2023.urls')),
+    # path('submitted/', include('recruitment2023.urls')),
 ]

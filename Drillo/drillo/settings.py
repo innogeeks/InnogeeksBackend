@@ -23,6 +23,7 @@ ALLOWED_HOSTS = os.environ.get('HOSTS').split(' ')
 # Application definition
 
 INSTALLED_APPS = [
+    'recruitment2023',
     'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,7 +71,7 @@ TEMPLATES = [
     },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -143,3 +144,12 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'neha.2125csit1004@kiet.edu'
+EMAIL_HOST_PASSWORD = "Jaiswal's__143."
