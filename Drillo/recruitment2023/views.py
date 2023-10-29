@@ -25,9 +25,7 @@ def submit(request):
 
         if recruitments.objects.filter(email_kiet=email_kiet).exists():
             messages.error(request, "Email Id already exists!!")
-            return redirect("recruitment/")
         else:
-            print("in else")
             new_reg = recruitments(
                 name=name,
                 email_personal=email_personal,
@@ -43,15 +41,7 @@ def submit(request):
 
             new_reg.save()
             # messages.success(request, "Registered Successfully")
-
-            # subject = 'Thanks for recruitment'
-            # message = f'Hi {name}, thank you for registering in innogeeks'
-            # email_from = settings.EMAIL_HOST_USER
-            # recipient_list = [email_personal, ]
-            # send_mail( subject, message, email_from, recipient_list )
-            
             return render(request, "submitted.html")
     else:
-        print("error occured")
-        return redirect("recruitment/") 
-    return render(request, 'recruitment2023.html', {'n': n})
+        return redirect("") 
+    return render(request, 'recruitment2023.html')
