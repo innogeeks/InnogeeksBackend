@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Innogeeks Recruitment</title>
+        <link rel="icon" type="image/x-icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/favicon/favicon.ico">
+        <link rel="stylesheet" href="/static/main.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                colors: {
+                  clifford: '#da373d',
+                }
+              }
+            }
+          }
+        </script>
+    </head>
+    <body>
+      {% for message in messages %}
+      <div class="alert">
+      <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 my-2 rounded relative" roles="alert">
+        <p class="text-center"><strong class="font-bold">Message</strong>
+          <span class="block sm:inline"> {{message}}</span></p>
+          <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+      </div>
+    </div>
+      {% endfor %}
+      
+        <div class="formbold-main-wrapper ">
+            <div class="formbold-form-wrapper shadow-2xl border-black rounded-3xl ">
+                <form class="space-y-3" action="/recruitment/submitted/" method="post">
+                  {{ csrf_input }}
+                  <div class="w-full mx-auto">
+                    <img  src="/static/innologobright.png" class="logo w-9/12 mx-auto">
+                  </div>
+    
+                <!-- name  -->
+                <div class="formbold-input-group">
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    class="formbold-form-input"
+                    required
+                    name="Name"
+                  />
+                </div>
+    
+                <!-- personal email -->
+                <div class="formbold-input-group">
+                  <!-- <label for="email" class="formbold-form-label"> Personal-Email<span>*</span> </label> -->
+                  <input
+                    type="email"
+                    id="p-email"
+                    placeholder="Enter your personal-email"
+                    class="formbold-form-input"
+                    required
+                    name="Personal-Email"
+                  />
+                </div>
+    
+                 <!-- college email -->
+                <div class="formbold-input-group">
+                  <!-- <label for="email" class="formbold-form-label"> College-Email<span>*</span> </label> -->
+                  <input
+                    type="c-email"
+                    id="email"
+                    placeholder="Enter your college-email"
+                    class="formbold-form-input"
+                    name="College-Email"
+                  />
+                </div>
+    
+                <!-- lib id -->
+                <div class="formbold-input-group">
+                  <!-- <label  class="formbold-form-label"> Library ID<span>*</span> </label> -->
+                  <input
+                    type="text"
+                    id="Library"
+                    placeholder="Enter your Library-ID"
+                    class="formbold-form-input"
+                    required
+                    name="Library-ID"
+                  />
+                </div>
+    
+                <!-- Contact no. -->
+                <div class="formbold-input-group">
+                    <!-- <label  class="formbold-form-label">Contact no.<span>*</span> </label> -->
+                    <input
+                      id="contact"
+                      type="number"
+                      placeholder="Enter your contact no."
+                      class="formbold-form-input"
+                      required
+                      name="Contact"
+                    />
+                  </div>
+          
+                  <!-- branch -->
+                  <div>
+                    <select class="formbold-form-select" name="Branch" id="branch" required>
+                      <option value="" hidden>Select Branch</option>
+                      <option value="CSE">CSE</option>
+                      <option value="IT">IT</option>
+                      <option value="CSIT">CSIT</option>
+                      <option value="CS">CS</option>
+                      <option value="CSE-AI">CSE-AI</option>
+                      <option value="CSE-AIML">CSE-AIML</option>
+                      <option value="ECE">ECE</option>
+                      <option value="EEE">EEE</option>
+                    </select>
+                  </div>
+    
+                  <!-- gender -->
+                  <div>
+                    <select class="formbold-form-select" name="Gender" id="gender" required>
+                      <option value="" hidden>Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+    
+                <!-- payment mode -->
+                  <div>
+                    <select class="formbold-form-select" name="Payment" id="payment" required>
+                      <option value="" hidden>Select Payment Mode</option>
+                      <option value="Online">Online(UPI)</option>
+                      <option value="Cash">Cash</option>
+                    </select>
+                  </div>
+    
+    
+                <!-- Residency -->
+                <div>
+                  <select class="formbold-form-select" name="Residence" id="residence" required>
+                    <option value="" hidden>Residence</option>
+                    <option value="Hosteller">Hosteller</option>
+                    <option value="Day Scholar">Day Scholar</option>
+                  </select>
+                </div>
+    
+    
+                <!-- desk  -->
+                <div>
+                  <select class="formbold-form-select" name="Desk" id="desk" required>
+                    <option value="" hidden>Select Desk</option>
+                    <option value="G block">G Block</option>
+                    <option value="Cafet">Cafeteria</option>
+                    <option value="Mech">Mechanical Block</option>
+                    <option value="TBI">TBI</option>
+                  </select>
+                </div>
+
+
+    
+                <!-- submit button -->
+                <button class="btn mx-auto" type="submit">
+                    <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+                        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                    </svg>
+                    <span class="text">Submit</span>
+                </button>
+              </form>
+            </div>
+          </div>
+    
+    </body>
+    </html>
