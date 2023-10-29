@@ -1,7 +1,13 @@
 from django.contrib import admin
 from .models import recruitments
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
+from django.core import mail
+from django.template.loader import render_to_string
+import threading
+from threading import Thread
 
+def send_html_mail(subject, html_content, recipient_list):
+    EmailThread(subject, html_content, recipient_list).start()
 
 class recruitmentsAdmin(admin.ModelAdmin):
     model = recruitments
@@ -22,16 +28,53 @@ class recruitmentsAdmin(admin.ModelAdmin):
     actions = ["send_confirmation_mail"]
 
     def send_confirmation_mail(self, request, queryset):
-        subject = "Registration Successful"
-        message = "Congratulations!! We recieved your details, we'll contact you soon✅"
-        from_email = 'neha.2125csit1004@kiet.edu'
+        connection = mail.get_connection()
+        # connection.open()
+        pl =[]
+        pl2=[]
+        for i in queryset:
+            print(i.email_personal)
+            if i.email_personal:
+                pl.append(i.email_personal)
+            if i.email_kiet:
+                pl2.append(i.email_kiet)
+            # else:
 
-        for item in queryset:
-            recipient = item.email_personal
+        connection.open()
+        message= render_to_string('confirmation.html')
+        send_html_mail('Innogeeks Recruitment | Due Payment',message,pl) 
+        send_html_mail('Innogeeks Recruitment | Due Payment',message,pl2)
 
-            send_mail(subject, message, from_email, [recipient])
-        queryset.update(payment_status=True)
-    send_confirmation_mail.short_description = "Send Confirmation Mail to selected users."
+        connection.close()
+    send_confirmation_mail.short_description = "Send an email for due paymemt"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #     subject = "Registration Successful"
+    #     message = "Congratulations!! We recieved your details, we'll contact you soon✅"
+    #     from_email = 'neha.2125csit1004@kiet.edu'
+
+    #     for item in queryset:
+    #         recipient = item.email_personal
+
+    #         send_mail(subject, message, from_email, [recipient])
+    #     queryset.update(payment_status=True)
+    # send_confirmation_mail.short_description = "Send Confirmation Mail to selected users."
 
 
 # Register your models here.
