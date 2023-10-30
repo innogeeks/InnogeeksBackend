@@ -24,7 +24,7 @@ def submit(request):
         day_scholar_hosteller = request.POST.get("Residence", "")
         desk = request.POST.get("Desk", "")
 
-        if recruitments.objects.filter(email_kiet=email_kiet).exists():
+        if recruitments.objects.filter(email_personal=email_personal).exists():
             return render(request, "mail_exist.html")
 
         else:
