@@ -61,35 +61,4 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection.close()
         queryset.update(payment_status=True)
     send_confirmation_mail.short_description = "Send an email for due paymemt"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #     subject = "Registration Successful"
-    #     message = "Congratulations!! We recieved your details, we'll contact you soon✅"
-    #     from_email = 'neha.2125csit1004@kiet.edu'
-
-    #     for item in queryset:
-    #         recipient = item.email_personal
-
-    #         send_mail(subject, message, from_email, [recipient])
-    #     queryset.update(payment_status=True)
-    # send_confirmation_mail.short_description = "Send Confirmation Mail to selected users."
-
-
-# Register your models here.
 admin.site.register(recruitments, recruitmentsAdmin)
