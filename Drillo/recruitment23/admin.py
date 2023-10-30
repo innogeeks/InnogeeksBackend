@@ -31,7 +31,7 @@ class recruitmentsAdmin(admin.ModelAdmin):
 
     list_per_page = 80
 
-    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode')
+    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode', 'payment_status')
 
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
