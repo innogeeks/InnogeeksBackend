@@ -44,19 +44,14 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection = mail.get_connection()
         # connection.open()
         pl =[]
-        pl2=[]
         for i in queryset:
             print(i.email_personal)
             if i.email_personal:
                 pl.append(i.email_personal)
-            if i.email_kiet:
-                pl2.append(i.email_kiet)
-            # else:
 
         connection.open()
         message= render_to_string('confirmation.html')
-        send_html_mail('Innogeeks Recruitment | Registration Successful',message,pl) 
-        send_html_mail('Innogeeks Recruitment | Registration Successful',message,pl2)
+        send_html_mail('Innogeeks Recruitment | Registration Successful',message,pl)
 
         connection.close()
         queryset.update(payment_status=True)
