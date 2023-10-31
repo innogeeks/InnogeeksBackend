@@ -18,6 +18,7 @@ class recruitments(models.Model):
     desk = models.CharField(max_length=15, null=False, blank=False)
     date = models.DateTimeField(default=date.today)
     payment_status = models.BooleanField(default=False)
+    recruitment_mail=models.BooleanField(default=False)
 
     def _str_(self):
         return self.name
