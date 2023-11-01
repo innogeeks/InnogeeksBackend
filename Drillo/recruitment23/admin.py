@@ -27,7 +27,7 @@ class recruitmentsAdmin(admin.ModelAdmin):
     fields = ['name', 'email_personal', 'email_kiet', 'library_id', 'contact_no',
               'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status']
 
-    list_display = ('name', 'payment_status', 'email_kiet', 'contact_no')
+    list_display = ('name', 'payment_status', 'email_kiet', 'contact_no', 'id')
 
     list_per_page = 80
 
@@ -35,6 +35,7 @@ class recruitmentsAdmin(admin.ModelAdmin):
 
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
+
 
     ordering = ('date', 'email_kiet')
 
@@ -56,4 +57,6 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection.close()
         queryset.update(payment_status=True)
     send_confirmation_mail.short_description = "Send an email for due paymemt"
+
+
 admin.site.register(recruitments, recruitmentsAdmin)
