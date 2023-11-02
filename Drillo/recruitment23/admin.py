@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from .models import recruitments
 from django.core.mail import send_mail, EmailMessage
@@ -25,13 +26,13 @@ def send_html_mail(subject, html_content, recipient_list):
 class recruitmentsAdmin(admin.ModelAdmin):
     model = recruitments
     fields = ['name', 'email_personal', 'email_kiet', 'library_id', 'contact_no',
-              'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status']
+              'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status', 'recruitment_mail']
 
     list_display = ('name', 'payment_status', 'email_kiet', 'contact_no', 'id')
 
     list_per_page = 80
 
-    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode', 'payment_status', 'date')
+    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode' ,'payment_status', 'date')
 
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
@@ -39,16 +40,17 @@ class recruitmentsAdmin(admin.ModelAdmin):
 
     ordering = ('date', 'email_kiet')
 
-    actions = ["send_confirmation_mail"]
+    actions = ["send_confirmation_mail","send_test_slot_mail"]
+   
 
     def send_confirmation_mail(self, request, queryset):
         connection = mail.get_connection()
-        # connection.open()
         pl =[]
         for i in queryset:
             print(i.email_personal)
             if i.email_personal:
                 pl.append(i.email_personal)
+            # else:
 
         connection.open()
         message= render_to_string('confirmation.html')
@@ -57,6 +59,4 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection.close()
         queryset.update(payment_status=True)
     send_confirmation_mail.short_description = "Send an email for due paymemt"
-
-
 admin.site.register(recruitments, recruitmentsAdmin)
