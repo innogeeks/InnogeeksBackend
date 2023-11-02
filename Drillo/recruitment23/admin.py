@@ -44,7 +44,6 @@ class recruitmentsAdmin(admin.ModelAdmin):
 
     def send_confirmation_mail(self, request, queryset):
         connection = mail.get_connection()
-        # connection.open()
         pl =[]
         for i in queryset:
             print(i.email_personal)
