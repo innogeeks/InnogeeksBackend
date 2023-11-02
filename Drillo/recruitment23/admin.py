@@ -28,7 +28,7 @@ class recruitmentsAdmin(admin.ModelAdmin):
     fields = ['name', 'email_personal', 'email_kiet', 'library_id', 'contact_no',
               'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status', 'recruitment_mail']
 
-    list_display = ('name', 'payment_status', 'email_kiet', 'contact_no', 'id')
+    list_display = ('name', 'payment_status', 'recruitment_mail','email_kiet', 'contact_no', 'id')
 
     list_per_page = 80
 
@@ -36,7 +36,6 @@ class recruitmentsAdmin(admin.ModelAdmin):
 
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
-
 
     ordering = ('date', 'email_kiet')
 
@@ -47,7 +46,6 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection = mail.get_connection()
         pl =[]
         for i in queryset:
-            print(i.email_personal)
             if i.email_personal:
                 pl.append(i.email_personal)
             # else:
@@ -59,4 +57,20 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection.close()
         queryset.update(payment_status=True)
     send_confirmation_mail.short_description = "Send an email for due paymemt"
+
+    def send_test_slot_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('test_slot.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test slot date and time',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+            
+    send_test_slot_mail.short_description = "test slot mail"
+
+    
+
+    
 admin.site.register(recruitments, recruitmentsAdmin)
