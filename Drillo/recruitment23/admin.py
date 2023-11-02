@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from .models import recruitments
 from django.core.mail import send_mail, EmailMessage
@@ -37,9 +36,30 @@ class recruitmentsAdmin(admin.ModelAdmin):
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
 
-    ordering = ('date', 'email_kiet')
+    ordering = ('name', 'id')
 
-    actions = ["send_confirmation_mail","send_test_slot_mail"]
+    actions = ["send_confirmation_mail",
+                "send_test_slot_mail",
+
+                "send_day1_slot1_lab1_mail",
+                "send_day1_slot1_lab2_mail", 
+                "send_day1_slot1_lab3_mail", 
+                "send_day1_slot1_lab4_mail",
+
+                "send_day1_slot2_lab1_mail", 
+                "send_day1_slot2_lab2_mail", 
+                "send_day1_slot2_lab3_mail", 
+                "send_day1_slot2_lab4_mail", 
+
+                "send_day2_slot1_lab1_mail", 
+                "send_day2_slot1_lab2_mail", 
+                "send_day2_slot1_lab3_mail", 
+                "send_day2_slot1_lab4_mail",
+
+                "send_day2_slot2_lab1_mail", 
+                "send_day2_slot2_lab2_mail", 
+                "send_day2_slot2_lab3_mail", 
+                "send_day2_slot2_lab4_mail"]
    
 
     def send_confirmation_mail(self, request, queryset):
@@ -64,13 +84,200 @@ class recruitmentsAdmin(admin.ModelAdmin):
             if i.email_personal:
                 connection.open()
                 message= render_to_string('test_slot.html',{"id":i.id, "name": i.name})
-                send_html_mail('Innogeeks Recruitment | Test slot date and time',message, [i.email_personal])
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
                 connection.close()
                 queryset.update(recruitment_mail=True)
-            
-    send_test_slot_mail.short_description = "test slot mail"
+    send_test_slot_mail.short_description = "Send test slot mail"
 
     
+    ##########################################     DAY 1-----SLOT 1        ##################################
 
-    
+    def send_day1_slot1_lab1_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot1_lab1.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot1_lab1_mail.short_description = "DAY-1 SLOT-1 LAB-1"
+
+    def send_day1_slot1_lab2_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot1_lab2.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot1_lab2_mail.short_description = "DAY-1 SLOT-1 LAB-2"
+
+    def send_day1_slot1_lab3_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot1_lab3.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot1_lab3_mail.short_description = "DAY-1 SLOT-1 LAB-3"
+
+    def send_day1_slot1_lab4_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot1_lab4.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot1_lab4_mail.short_description = "DAY-1 SLOT-1 LAB-4"
+
+
+    ##########################################     DAY 1-----SLOT 2        ##################################
+    def send_day1_slot2_lab1_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot2_lab1.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot2_lab1_mail.short_description = "DAY-1 SLOT-2 LAB-1"
+
+    def send_day1_slot2_lab2_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot2_lab2.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot2_lab2_mail.short_description = "DAY-1 SLOT-2 LAB-2"
+
+    def send_day1_slot2_lab3_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot2_lab3.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot2_lab3_mail.short_description = "DAY-1 SLOT-2 LAB-3"
+
+    def send_day1_slot2_lab4_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day1_slot2_lab4.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day1_slot2_lab4_mail.short_description = "DAY-1 SLOT-2 LAB-4"
+
+
+
+    ##########################################     DAY 2-----SLOT 1        ##################################
+
+
+    def send_day2_slot1_lab1_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot1_lab1.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot1_lab1_mail.short_description = "DAY-2 SLOT-1 LAB-1"
+
+    def send_day2_slot1_lab2_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot1_lab2.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot1_lab2_mail.short_description = "DAY-2 SLOT-1 LAB-2"
+
+    def send_day2_slot1_lab3_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot1_lab3.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot1_lab3_mail.short_description = "DAY-2 SLOT-1 LAB-3"
+
+    def send_day2_slot1_lab4_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot1_lab4.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot1_lab4_mail.short_description = "DAY-2 SLOT-1 LAB-4"
+
+
+    ##########################################     DAY 2-----SLOT 2        ##################################
+
+
+    def send_day2_slot2_lab1_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot2_lab1.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot2_lab1_mail.short_description = "DAY-2 SLOT-2 LAB-1"
+
+    def send_day2_slot2_lab2_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot2_lab2.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot2_lab2_mail.short_description = "DAY-2 SLOT-2 LAB-2"
+
+    def send_day2_slot2_lab3_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot2_lab3.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot2_lab3_mail.short_description = "DAY-2 SLOT-2 LAB-3"
+
+    def send_day2_slot2_lab4_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('day2_slot2_lab4.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test IDs and Slots',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
+    send_day2_slot2_lab4_mail.short_description = "DAY-2 SLOT-2 LAB-4"
+
+
 admin.site.register(recruitments, recruitmentsAdmin)
