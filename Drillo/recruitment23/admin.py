@@ -28,7 +28,7 @@ class recruitmentsAdmin(admin.ModelAdmin):
     fields = ['name', 'email_personal', 'email_kiet', 'library_id', 'contact_no',
               'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status', 'recruitment_mail']
 
-    list_display = ('name', 'payment_status', 'recruitment_mail','email_kiet', 'contact_no')
+    list_display = ('name', 'payment_status', 'recruitment_mail','email_kiet', 'contact_no', 'id')
 
     list_per_page = 80
 
@@ -46,19 +46,15 @@ class recruitmentsAdmin(admin.ModelAdmin):
         connection = mail.get_connection()
         # connection.open()
         pl =[]
-        pl2=[]
         for i in queryset:
             print(i.email_personal)
             if i.email_personal:
                 pl.append(i.email_personal)
-            if i.email_kiet:
-                pl2.append(i.email_kiet)
             # else:
 
         connection.open()
         message= render_to_string('confirmation.html')
-        send_html_mail('Innogeeks Recruitment | Registration Successful',message,pl) 
-        send_html_mail('Innogeeks Recruitment | Registration Successful',message,pl2)
+        send_html_mail('Innogeeks Recruitment | Registration Successful',message,pl)
 
         connection.close()
         queryset.update(payment_status=True)
@@ -66,23 +62,14 @@ class recruitmentsAdmin(admin.ModelAdmin):
 
     def send_test_slot_mail(self, request, queryset):
         connection = mail.get_connection()
-        pl =[]
-        pl2=[]
         for i in queryset:
-            print(i.email_personal)
             if i.email_personal:
-                pl.append(i.email_personal)
-            if i.email_kiet:
-                pl2.append(i.email_kiet)
+                connection.open()
+                message= render_to_string('test_slot.html',{"id":i.id, "name": i.name})
+                send_html_mail('Innogeeks Recruitment | Test slot date and time',message, [i.email_personal])
+                connection.close()
+                queryset.update(recruitment_mail=True)
             
-
-        connection.open()
-        message= render_to_string('test_slot.html')
-        send_html_mail('Innogeeks Recruitment | Test slot date and time',message,pl) 
-        send_html_mail('Innogeeks Recruitment | Test slot date and time',message,pl2)
-
-        connection.close()
-        queryset.update(recruitment_mail=True)
     send_test_slot_mail.short_description = "test slot mail"
 
     
