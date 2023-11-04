@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 import threading
 from threading import Thread
 from django.conf import settings
+from import_export.admin import ImportExportModelAdmin
 
 class EmailThread(threading.Thread):
     def __init__(self, subject, html_content, recipient_list):
@@ -22,7 +23,8 @@ class EmailThread(threading.Thread):
 def send_html_mail(subject, html_content, recipient_list):
     EmailThread(subject, html_content, recipient_list).start()
 
-class recruitmentsAdmin(admin.ModelAdmin):
+
+class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     model = recruitments
     fields = ['name', 'email_personal', 'email_kiet', 'library_id', 'contact_no',
               'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status', 'recruitment_mail']

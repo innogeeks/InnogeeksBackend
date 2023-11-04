@@ -24,6 +24,7 @@ ALLOWED_HOSTS = os.environ.get('HOSTS').split(' ')
 # Application definition
 
 INSTALLED_APPS = [
+    'import_export',
     'unfold',
     'storages',
     'corsheaders',
