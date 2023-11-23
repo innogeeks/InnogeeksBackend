@@ -33,7 +33,7 @@ class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     list_per_page = 80
 
-    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode' ,'payment_status', 'date', 'recruitment_mail')
+    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode' ,'payment_status', 'date', 'recruitment_mail', 'interview_mail')
 
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
