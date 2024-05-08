@@ -16,9 +16,10 @@
         <meta name="author" content="">
     
         <!-- Site Icons -->
-        <link rel="shortcut icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" type="image/x-icon">
-        <link rel="apple-touch-icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png">
-    
+        <link rel="shortcut icon" href="https://template-mail-images.s3.ap-south-1.amazonaws.com/inno+logo+(3).png" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://template-mail-images.s3.ap-south-1.amazonaws.com/inno+logo+(3).png">
+        <!-- CSS -->
+        <link rel="stylesheet" href="">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ static('css/bootstrap.min.css') }}">
       <!-- Site CSS -->
@@ -27,27 +28,794 @@
         <link rel="stylesheet" href="{{ static('css/responsive.css') }}">
       <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ static('css/custom.css') }}">
-
+<!--  #4ED7FC #ff0f7b
+ #38A8C7 #f89b29 -->
        <style>
+            :root {
+              --shadow-color:#38A8C7  ;
+              --shadow-color-light:#4ED7FC ;
+            }
             html{
                 scroll-behavior: smooth;
             }
+            .aboutImage{
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              margin-left: 5%;
+              display: block;
+              justify-content: center;
+              align-items: center;
+              scale:1.1;
+            }
+            
+            .navbar-header{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 120px;
+            }
+            .nav-item{
+                color: white;
+            }
+            .nav li{
+              display: flex;
+              gap:0;
+            }
+            nav.navbar.bootsnav ul.nav > li > a{
+              position:absolute;
+              top: -500%;
+            }
+            .text-nav{
+              display:flex;
+              align-items:center;
+              margin-right: 10px;
+              height: 60px;
+            }
+            .text-nav:hover{
+              color: #005E78;
+            }
+            a{
+              text-decoration:none;
+              color:inherit;
+             }
+             a:hover{
+              text-decoration:none;
+              color:inherit;
+             }
+             .type1 {
+               height: 50px;
+               width: 150px;
+               position: relative;
+               background-color: transparent;
+               cursor: pointer;
+               border: 2px solid #005E78;
+               overflow: hidden;
+               border-radius: 30px;
+               
+               transition: all 0.1s ease-in-out;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+               margin:5px;
+             }
+            
+             
+             .btn-txt {
+               z-index: 1;
+               font-weight: 800;
+               letter-spacing: 4px;
+             }
+             
+             .type1::after {
+               content: "";
+               position: absolute;
+               left: 0;
+               top: 0;
+               transition: all 0.5s ease-in-out;
+               background-color: #005E78;
+               border-radius: 30px;
+               visibility: hidden;
+               height: 10px;
+               width: 10px;
+               z-index: -1;
+             }
+             
+             .type1:hover {
+               color: white;
+               border: black;
+             }
+             
+             .type1:hover::after {
+               visibility: visible;
+               transform: scale(100) translateX(2px);
+             }
+            
+            .register_button{
+              position: relative;
+              margin: 0;
+              padding: 0.8em 1em;
+              outline: none;
+              text-decoration: none;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              border: none;
+              text-transform: uppercase;
+              background-color: white;
+              border-radius: 10px;
+              color: #000;
+              font-weight: 300;
+              font-size: 18px;
+              font-family: inherit;
+              z-index: 0;
+              overflow: hidden;
+              transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+              font-weight: bold;
+            }
+            .register_button:hover{
+              animation: sh0 0.5s ease-in-out both;
+            }
+            @keyframes sh0 {
+              0% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+              }
+            
+              25% {
+                transform: rotate(7deg) translate3d(0, 0, 0);
+              }
+            
+              50% {
+                transform: rotate(-7deg) translate3d(0, 0, 0);
+              }
+            
+              75% {
+                transform: rotate(1deg) translate3d(0, 0, 0);
+              }
+            
+              100% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+              }
+            }
+            .register_button:hover span {
+              animation: storm 0.7s ease-in-out both;
+              animation-delay: 0.06s;
+            }
+            
+            .register_button::before,
+            .register_button::after {
+              content: '';
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              background: #000;
+              opacity: 0;
+              transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+              z-index: -1;
+              transform: translate(100%, -25%) translate3d(0, 0, 0);
+            }
+            
+            .register_button:hover::before,
+            .register_button:hover::after {
+              opacity: 0.15;
+              transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+            }
+            
+            .register_button:hover::before {
+              transform: translate3d(50%, 0, 0) scale(0.9);
+            }
+            
+            .register_button:hover::after {
+              transform: translate(50%, 0) scale(1.1);
+            }
+            .hero-text strong{
+              font-size: 3.5rem;
+              text-transform: uppercase;
+              height: auto;
+              text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+                0 0 3px var(--shadow-color-light),
+                0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color);
+            }
+            
+            .hero-text span{
+              font-size: 2rem;
+              color: white;
+              text-transform: uppercase;
+            }
+            .hero-desc{
+              font-size: 1rem;
+              
+            }
+            .slides-navigation a{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 10px;
+              width: 50px;
+              height: 50px;
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+            }
+            .slides-navigation:hover{
+              background-color: var(--shadow-color);
+            }
+            .slides-navigation a{
+              border-radius: 50%;
+            }
+
+            .slides-pagination a{
+              border-radius: 50%;
+              width: 15px;
+              height: 15px;
+            }
+            .slides-pagination a{
+              background-color: grey;
+              border: 1px solid grey;
+            }
+
+            .slides-pagination a.current{
+              background-color: var(--shadow-color);
+              border: 2px solid var(--shadow-color);
+            }
+
+            #about , #sponsors ,#timeline{
+              background-image: url("https://res.cloudinary.com/dib0peewu/image/upload/v1714123982/marble-2398946_1280_ju71zd.jpg");
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-attachment: fixed;
+              min-height: 560px;
+              height: 100%;
+            }
+
+            #about h1{
+              font-size: 3rem;
+            }
+
+            #about .container{
+              display: flex;
+              flex-direction: column;
+              gap: 5rem;
+              justify-content: space-evenly;
+              align-items: center;
+              min-height: 560px;
+              height: 100%;
+            }
+
+            #about .about-container{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5%;
+              margin-top: 0%;
+            }
+            .aboutImage-container{
+              width: 400px;
+              height: 400px;  
+              object-fit: cover;
+              
+            }
+            .aboutImage{
+              aspect-ratio: 3/2;
+            }
+            .aboutText{
+              font-size: 1.5rem;
+              width: 50%;
+            }
+
+            #sponsors h1{
+              font-size: 3rem;
+            }
+            /*works janky on mobile :<*/
+            .sponsor-container {
+              position: relative;
+              width: 190px;
+              height: 254px;
+              transition: 200ms;
+            }
+
+            .sponsor-container:active {
+              width: 180px;
+              height: 245px;
+            }
+
+            #card {
+              position: absolute;
+              inset: 0;
+              z-index: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 20px;
+              transition: 700ms;
+              border-radius: 20px;
+            }
+            .sponsor-img{
+              object-fit:contain;
+              width:100%;
+              height:100%;
+              border-radius: 20px;
+            }
+            .tracker:hover ~ #card .title {
+              opacity: 1;
+            }
+
+            .tracker {
+              position: absolute;
+              z-index: 200;
+              width: 100%;
+              height: 100%;
+            }
+
+            .tracker:hover {
+              cursor: pointer;
+            }
+
+            .tracker:hover ~ #card #prompt {
+              opacity: 0;
+            }
+
+            .tracker:hover ~ #card {
+              transition: 300ms;
+              filter: brightness(1.1);
+            }
+
+            .container:hover #card::before {
+              transition: 200ms;
+              content: '';
+              opacity: 80%;
+            }
+
+            .canvas {
+              perspective: 800px;
+              inset: 0;
+              z-index: 200;
+              position: absolute;
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+              grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+              gap: 0px 0px;
+              grid-template-areas: "tr-1 tr-2 tr-3 tr-4 tr-5"
+                "tr-6 tr-7 tr-8 tr-9 tr-10"
+                "tr-11 tr-12 tr-13 tr-14 tr-15"
+                "tr-16 tr-17 tr-18 tr-19 tr-20"
+                "tr-21 tr-22 tr-23 tr-24 tr-25";
+            }
+
+            #card::before {
+              content: '';
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+              filter: blur(2rem);
+              opacity: 30%;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              z-index: -1;
+              transition: 200ms;
+            }
+
+            .tr-1 {
+              grid-area: tr-1;
+            }
+
+            .tr-2 {
+              grid-area: tr-2;
+            }
+
+            .tr-3 {
+              grid-area: tr-3;
+            }
+
+            .tr-4 {
+              grid-area: tr-4;
+            }
+
+            .tr-5 {
+              grid-area: tr-5;
+            }
+
+            .tr-6 {
+              grid-area: tr-6;
+            }
+
+            .tr-7 {
+              grid-area: tr-7;
+            }
+
+            .tr-8 {
+              grid-area: tr-8;
+            }
+
+            .tr-9 {
+              grid-area: tr-9;
+            }
+
+            .tr-10 {
+              grid-area: tr-10;
+            }
+
+            .tr-11 {
+              grid-area: tr-11;
+            }
+
+            .tr-12 {
+              grid-area: tr-12;
+            }
+
+            .tr-13 {
+              grid-area: tr-13;
+            }
+
+            .tr-14 {
+              grid-area: tr-14;
+            }
+
+            .tr-15 {
+              grid-area: tr-15;
+            }
+
+            .tr-16 {
+              grid-area: tr-16;
+            }
+
+            .tr-17 {
+              grid-area: tr-17;
+            }
+
+            .tr-18 {
+              grid-area: tr-18;
+            }
+
+            .tr-19 {
+              grid-area: tr-19;
+            }
+
+            .tr-20 {
+              grid-area: tr-20;
+            }
+
+            .tr-21 {
+              grid-area: tr-21;
+            }
+
+            .tr-22 {
+              grid-area: tr-22;
+            }
+
+            .tr-23 {
+              grid-area: tr-23;
+            }
+
+            .tr-24 {
+              grid-area: tr-24;
+            }
+
+            .tr-25 {
+              grid-area: tr-25;
+            }
+
+            .tr-1:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg);
+            }
+
+            .tr-2:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg);
+            }
+
+            .tr-3:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            .tr-4:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg);
+            }
+
+            .tr-5:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg);
+            }
+
+            .tr-6:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg);
+            }
+
+            .tr-7:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg);
+            }
+
+            .tr-8:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            .tr-9:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg);
+            }
+
+            .tr-10:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg);
+            }
+
+            .tr-11:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg);
+            }
+
+            .tr-12:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg);
+            }
+
+            .tr-13:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            .tr-14:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg);
+            }
+
+            .tr-15:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg);
+            }
+
+            .tr-16:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg);
+            }
+
+            .tr-17:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg);
+            }
+
+            .tr-18:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            .tr-19:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg);
+            }
+
+            .tr-20:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg);
+            }
+
+            .tr-21:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg);
+            }
+
+            .tr-22:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg);
+            }
+
+            .tr-23:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            .tr-24:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg);
+            }
+
+            .tr-25:hover ~ #card {
+              transition: 125ms ease-in-out;
+              transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg);
+            }
+
+            .noselect {
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }
+
+            .registrations-start {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              max-width: 320px;
+              width: 100%;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+              padding: 32px;
+              border-radius: 10px;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+              background-color: white;
+              margin: 5%;
+            }
+            
+            .registrations-startcontent {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+              color: white;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            
+            .registrations-startcontent .registrations-startheading {
+              font-weight: 700;
+              font-size: 32px;
+            }
+            
+            .registrations-startcontent .registrations-startpara {
+              line-height: 1.5;
+              width: 100%;
+              text-align: center;
+            }
+            
+            .registrations-startcontent .registrations-startbtn {
+              color: #e8e8e8;
+              text-decoration: none;
+              padding: 10px;
+              font-weight: 600;
+              border: none;
+              cursor: default;
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+              border-radius: 5px;
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+              min-width: 100px;
+            }
+            
+            .registrations-start::before {
+              content: "";
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 5px;
+              height: 100%;
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+              z-index: -1;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            
+            .registrations-start:hover::before {
+              width: 100%;
+            }
+            
+            .registrations-start:hover {
+              box-shadow: none;
+            }
+            
+            .registrations-start:hover .registrations-startbtn {
+              color: #212121;
+              background: #e8e8e8;
+            }
+
+            
+            .registrations-startcontent .btn:active {
+              box-shadow: none;
+            }
+
+            .arrow-png{
+              position: absolute;
+              bottom: -100px;
+              left:-100px ;
+              transform: rotate(65deg);
+            }
+
+            .footer{
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+            }
+            
+
+            
+
+
+
+
+            #back-to-top{
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              display: none;
+              background-color: #333;
+              padding-bottom: 10px;
+              color: white;
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            }
+
+            @media screen and (max-width: 992px) {
+              .navbar .container{
+                flex-direction: row-reverse;
+                transform: translateY(-25px);
+              }
+              .nav.navbar.bootsnav .navbar-nav > li > a{
+                border: none;
+              }
+              nav.navbar.bootsnav .navbar-nav > li{
+                margin-bottom: 10px;
+              }
+              .navbar .nav-item{
+                background-color: black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                border-radius: 20px;
+              }
+              .type1{
+                border:none;
+              }
+              .navbar-brand img{
+                transform: translateX(-100%);
+              }
+              
+            }
+
             @media screen and (max-width: 800px) {
                 .aboutImage{
                     display: none;
                 }
-            }
-            @media screen and (min-width: 800px) {
-                .aboutText{
-                    margin-top: 10%;
+                .aboutImage-container{
+                  display: none;
                 }
+                .aboutText{
+                    width: 100%;
+                    text-align: center;
+                }
+                .type1{
+                  border:none;
+                }
+                .type1:hover{
+                  color: #005E78;
+                }
+                .navbar-brand img{
+                  transform: translateX(-100%);
+                }
+                
             }
             @media screen and (max-width: 500px) {
                 .importantInfo{
                     flex-direction: column;
                 }
+                .aboutText{
+                    width: 100%;
+                }
+                .arrow-png{
+                  bottom: -100px;
+                  left:-30px ;
+                  transform: rotate(65deg);
+                  z-index: 100;
+                }
+                .navbar-brand img{
+                  transform: translateX(-60%);
+                }
             }
-
+            @media screen and (max-width: 360px){
+              .navbar-brand img{
+                transform: translateX(-40%);
+              }
+            }
+            
         </style>
     
     
@@ -55,32 +823,54 @@
     
     <body>
         <!-- Start Main Top -->
-        <header class="main-header">
+        <header class="main-header" >
             <!-- Start Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-                <div class="container">
+            <nav class="navbar navbar-expand-lg  navbar-default bootsnav" id="nav" style="height:120px; background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );">
+                <div class="container" >
                     <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                        <a class="navbar-brand" href="https://www.innogeeks.in"><img src="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" class="logo" alt="" style="width: 250px;height: 80px;"></a>
-                    </div>
+                    <div class="navbar-header" style="display: contents;">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                          <img src="https://res.cloudinary.com/dib0peewu/image/upload/v1714109912/menu_roeuvs.png" alt="" style="width: 100%;height: 25px;">
+                        </button>
+                        <a class="navbar-brand" href="https://www.innogeeks.in"><img src="https://template-mail-images.s3.ap-south-1.amazonaws.com/inno+logo+(3).png" class="logo" alt="" style="width: 150px;height: 100%;"></a>
+                      </div>
                     <!-- End Header Navigation -->
     
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                          
+                          {% if user.username %}
+                          <li class="nav-item">
+                           <p class="text-nav">
+                            <a href="/user/dashboard">
+                              <!-- <span class="btn-txt">User {{user.username}}</span> -->
+                              <span class="btn-txt">Dashboard</span>
+                            <a/>
+                          </p>
+                          </li>
                           {% if (not registered) %}
                           <li class="nav-item">
-                            <a class="nav-link" href="/event/register/{{submission.name}}">Register</a>
+                            <p class="type1">
+                              <a href="/event/register/{{submission.name}}">
+                                <span class="btn-txt">Register</span>
+                              <a/>
+                            </p>
                           </li>
                           {% endif %}
-                          {% if user.username %}
-                          <li class="nav-item"><a class="nav-link" href="/user/dashboard">User {{user.username}}</a></li>
-                          <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+                          <li class="nav-item">
+                            <p class="type1">
+                              <a href="/user/logout">
+                                <span class="btn-txt">Logout</span>
+                              <a/>
+                          </li>
                           {% else %}
-                          <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+                          <li class="nav-item">
+                            <p class="type1">
+                              <a href="/user/login">
+                                <span class="btn-txt">Login</span>
+                              <a/>
+                          </li>
                           {% endif %}
                         </ul>
                       </div> 
@@ -110,17 +900,28 @@
                     <img src={{i}} alt="">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>{{submission.name}} <br> by Innogeeks</strong></h1>
-                                <p class="m-b-40">{{submission.shortDesc}}</p>
+                            <div class="col-md-12" style="
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        ">
+                                <p class="hero-text">
+                                  <strong>{{submission.name}} <br> 
+                                    <span> By Innogeeks</span>
+                                  </strong>
+                                </p>
+                                <p class="m-b-40 hero-desc" style="color:white">{{submission.shortDesc}}</p>
                                 {% if registered %}
                                 <p>
-                                    <p class="btn hvr-hover">Already Registered</p>
+                                  <button class="register_button">
+                                    <span>Already Registered</span>
+                                  </button>
                                   {% else %}
-                                  <a class="btn hvr-hover" href="/event/register/{{submission.name}}"
-                                    >Register Now</a
-                                  >
-                                  </p>
+                                  <a href="/event/register/{{submission.name}}">
+                                  <button class="register_button">
+                                    <span>Register Now</span>
+                                  </button>
+                                </a>
                                   {% endif %}
                             </div>
                         </div>
@@ -134,14 +935,21 @@
             </div>
         </div>
         <!-- End Slider -->
+
+
     
         <!-- Start Categories  -->
         <div class="categories-shop" id="about">
             <div class="container">
-                <center><h1 style="margin-bottom: 2%;"><strong>About {{submission.name}}</strong></h1></center> 
-                <div style="display: flex;">
+                <center>
+                  <h1 style="margin-bottom: 2%;"><strong>About {{submission.name}}</strong></h1>
+                </center> 
+                <div class="about-container" style="display: flex;">
                     <p class="aboutText" style="overflow-wrap: break-word; word-break: break-word; text-align: justify; margin-right: 5%;">{{submission.message}}</p>
-                    <img class="aboutImage" src={{aboutImage}} alt="">
+                    <div class="aboutImage-container">
+                      <img class="aboutImage" src={{aboutImage}} alt="">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -149,14 +957,47 @@
         
 
         {% if sponsors %}
-        <div class="box-add-products">
+        <div class="box-add-products" id="sponsors">
             <div class="container">
                 <center><h1 style="margin-bottom: 5%;"><strong>OUR SPONSORS</strong></h1></center> 
-                <center><div class="row" style="display: flex; justify-content: center; align-items: center;">
+                <center><div class="row sponsor-card" style="display: flex; justify-content: center; align-items: center; gap:3rem ; flex-wrap:wrap ; max-width:80vw;";>
                     {% for i in sponsors %}
-                        <div class="col-lg-4 col-md-4 col-sm-6">
+                        <!-- <div class="col-lg-4 col-md-4 col-sm-6">
                                 <img class="img-fluid" src={{i}} alt="sponsors" style="width: 50%; margin: 5%;"/>
+                        </div> -->
+                        <div class="sponsor-container noselect ">
+                          <div class="canvas">
+                            <div class="tracker tr-1"></div>
+                            <div class="tracker tr-2"></div>
+                            <div class="tracker tr-3"></div>
+                            <div class="tracker tr-4"></div>
+                            <div class="tracker tr-5"></div>
+                            <div class="tracker tr-6"></div>
+                            <div class="tracker tr-7"></div>
+                            <div class="tracker tr-8"></div>
+                            <div class="tracker tr-9"></div>
+                            <div class="tracker tr-10"></div>
+                            <div class="tracker tr-11"></div>
+                            <div class="tracker tr-12"></div>
+                            <div class="tracker tr-13"></div>
+                            <div class="tracker tr-14"></div>
+                            <div class="tracker tr-15"></div>
+                            <div class="tracker tr-16"></div>
+                            <div class="tracker tr-17"></div>
+                            <div class="tracker tr-18"></div>
+                            <div class="tracker tr-19"></div>
+                            <div class="tracker tr-20"></div>
+                            <div class="tracker tr-21"></div>
+                            <div class="tracker tr-22"></div>
+                            <div class="tracker tr-23"></div>
+                            <div class="tracker tr-24"></div>
+                            <div class="tracker tr-25"></div>
+                            <div id="card">
+                                <img class="sponsor-img" src={{i}} alt="sponsors"/>
+                            </div>
+                          </div>
                         </div>
+                    </div>
                     {% endfor %}
                 </div></center>
             </div>
@@ -165,16 +1006,56 @@
     
     
         <!-- Start Blog  -->
-        <div class="latest-blog">
+        <div class="latest-blog" id="timeline">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="title-all text-center">
                             <h1>Important Information</h1>
                             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations start</h3><br>{{submission.start_date}}</center></div>
+                               <!--<div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations start</h3><br>{{submission.start_date}}</center></div>
                                 <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations ends</h3><br>{{submission.end_date}}</center></div>
-                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Total Number of Registrations</h3><br>{{registration_count}}</center></div>
+                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Total Number of Registrations</h3><br>{{registration_count}}</center></div> -->
+                                
+                                <div class="registrations-start">
+                                  <div class="registrations-startcontent">
+                                    <p class="registrations-startheading">
+                                      Registrations Start
+                                    </p>
+                                    <p class="registrations-startpara">
+                                      {{submission.start_date}}
+                                    </p>
+                                    <button class="registrations-startbtn">Hola</button>
+                                  </div>
+                                  <div class="arrow-png">
+                                    <img src="https://res.cloudinary.com/dib0peewu/image/upload/v1714141665/scribble-removebg-preview_z8yhjg.png" width="120px" alt="arrow-png" />
+                                  </div>
+                                </div>
+                                <div class="registrations-start">
+                                  <div class="registrations-startcontent">
+                                    <p class="registrations-startheading">
+                                      Registrations End
+                                    </p>
+                                    <p class="registrations-startpara">
+                                      {{submission.end_date}}
+                                    </p>
+                                    <button class="registrations-startbtn">See You Soon</button>
+                                  </div>
+                                  <div class="arrow-png">
+                                    <img src="https://res.cloudinary.com/dib0peewu/image/upload/v1714141665/scribble-removebg-preview_z8yhjg.png" width="120px" alt="arrow-png" />
+                                  </div>
+                                </div>
+                                <div class="registrations-start">
+                                  <div class="registrations-startcontent">
+                                    <p class="registrations-startheading">
+                                      Total Number of Registrations
+                                    </p>
+                                    
+                                    <button class="registrations-startbtn">{{registration_count}}</button>
+                                  </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -183,15 +1064,100 @@
             </div>
         </div>
         <!-- End Blog  -->
-    
-        <!-- Start copyright  -->
-        <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. &copy; 2023 Made with ❤️ by:
-                <a href="https://innogeeks.in">Team Innogeeks</a></p>
+        
+
+        <!-- Footer -->
+<footer class="text-center text-lg-start  text-muted footer">
+    <!-- Section: Links  -->
+    <section class="text-light">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-l g-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <div style="height: 200px; overflow: hidden; object-fit: cover; margin-top:-100px;">
+                <a class="navbar-brand" href="https://www.innogeeks.in">
+                    <img src="https://template-mail-images.s3.ap-south-1.amazonaws.com/inno+logo+(3).png" class="logo" alt="" style="width: 250px;height: 100%;">
+                </a>
+            </div>
+            <p  style="color:white;">
+                {{submission.shortDesc}}
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" >
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4" style="color:white;">
+                Useful links
+            </h6>
+            <p>
+              <a href="#slides-shop" class="text-reset"  style="color:white;"  >Home</a>
+            </p>
+            <p>
+              <a href="#about" class="text-reset"  style="color:white;">About</a>
+            </p>
+            <p>
+              <a href="#sponsors" class="text-reset"  style="color:white;">Sponsors</a>
+            </p>
+            <p>
+              <a href="#timeline" class="text-reset"  style="color:white;">Timeline</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4" style="color:white;">
+              More Events
+            </h6>
+            <p>
+              <a href="https://innohacks.live/" class="text-reset" style="color:white;">Innohacks</a>
+            </p>
+            <p>
+              <a href="https://iwoc.codes/" class="text-reset" style="color:white;">Iwoc</a>
+            </p>
+            <p>
+              <a href="https://coderspree.netlify.app/" class="text-reset" style="color:white;">Coderspree</a>
+            </p>
+            <p>
+              ...many More
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4" style="color:white;">Contact Us</h6>
+            <p ><i class="fas fa-home me-3" style="margin-right:10px;"></i><span>KIET Group Of Institution</span> </p>
+            <p>
+              <i class="fas fa-envelope me-3" style="margin-right:10px;"></i>
+              innogeeks@kiet.edu
+            </p>
+            <p><i class="fas fa-phone me-3" style="margin-right:10px;"></i>+91 9808989898</p>
+          </div>
+          <!-- Grid column -->
         </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Copyright:
+      <a class="text-reset fw-bold" href="https://innogeeks.in/" style="color:">innogeeks.in</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
         <!-- End copyright  -->
     
-        <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+        <a href="#hero" id="back-to-top">&uarr;</a>
     
         <!-- ALL JS FILES -->
         <script src="{{ static('js/jquery-3.2.1.min.js') }}"></script>
