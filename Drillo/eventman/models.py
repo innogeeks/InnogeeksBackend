@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
 
+
 class FormSubmission(models.Model):
+    is_coordinator = models.BooleanField("is coordinator", default=False)
     name = models.CharField(max_length=255)
     email = models.EmailField()
     shortDesc = models.TextField()

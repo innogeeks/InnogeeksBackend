@@ -5,25 +5,52 @@ from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from user.models import User
+from django.contrib import messages
 
-@csrf_exempt
+
+# @csrf_exempt
+# def form_submission(request):
+#     if request.method == 'POST':
+#         form = FormSubmissionForm(request.POST)
+#         if form.is_valid():
+#             username = request.user
+#             user = User.objects.get(username = username)
+#             events_created = user.events_created + \
+#                 " " + form.cleaned_data.get("name")
+#             User.objects.filter(username = username).update(events_created=events_created)
+#             submission = form.save(commit=False)
+#             submission.save()
+#             url = submission.url
+#             return redirect(reverse('page_preview', kwargs={'url': url}))
+
+#     else:
+#         form = FormSubmissionForm()
+#     return render(request, 'create.html', {'form': form})
 def form_submission(request):
-    if request.method == 'POST':
-        form = FormSubmissionForm(request.POST)
-        if form.is_valid():
-            username = request.user
-            user = User.objects.get(username = username)
-            events_created = user.events_created + \
-                " " + form.cleaned_data.get("name")
-            User.objects.filter(username = username).update(events_created=events_created)
-            submission = form.save(commit=False)
-            submission.save()
-            url = submission.url
-            return redirect(reverse('page_preview', kwargs={'url': url}))
-
+    user = request.user if request.user.is_authenticated else None
+    
+    if user is not None and user.is_authenticated:
+        if user.is_coordinator:
+            if request.method == 'POST':
+                form = FormSubmissionForm(request.POST)
+                if form.is_valid():
+                    username = request.user
+                    user = User.objects.get(username=username)
+                    events_created = user.events_created + " " + form.cleaned_data.get("name")
+                    User.objects.filter(username=username).update(events_created=events_created)
+                    submission = form.save(commit=False)
+                    submission.save()
+                    url = submission.url
+                    return redirect(reverse('page_preview', kwargs={'url': url}))
+            else:
+                form = FormSubmissionForm()
+            return render(request, 'create.html', {'form': form, 'user': user})
+        else:
+            messages.error(request, "You are not authorized to create events.")
+            return redirect("dashboard") 
     else:
-        form = FormSubmissionForm()
-    return render(request, 'create.html', {'form': form})
+        messages.info(request, "Please log in to create events.")
+        return redirect("login_view")
 
 def page_preview(request,url):
     submission = FormSubmission.objects.get(url=url)

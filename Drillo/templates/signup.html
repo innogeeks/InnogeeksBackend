@@ -13,8 +13,8 @@
         <h1 class="mb-9 text-2xl mt-5">SignUp Form</h1>
         {% if msg != "" %}
           <p class="mb-5 bg-red-200 p-3 rounded-md m-3">{{msg}}</p>
-        {% endif %}
-        {{form.username}} {{form.email}}<p style="font-size: x-small; padding: 2%; margin: 4% 4% 0% 4%;"> Password should be 8 characters long.<br> Which contains one special character, atleast one uppercaes character and should contain numerics</p> {{form.password1}} {{form.password2}} {{form.branch}} {{form.library_ID}} {{form.github}}
+        {% endif %} 
+        {{form.username}} {{form.email}}<p style="font-size: x-small; padding: 2%; margin: 4% 4% 0% 4%;"> Password should be 8 characters long.<br> Which contains one special character, at least one uppercase character and should contain numerics</p> {{form.password1}} {{form.password2}} {{form.branch}} {{form.library_ID}} {{form.github}}
       <input type="submit" value="Signup" class="bg-blue-500 rounded-md w-11/12 p-2 hover:bg-blue-950 hover:text-white my-8 "/>
       <p class="mb-5">Already having an Account &nbsp;<a href="/user/login" class="text-indigo-500 underline underline-offset-2">Login</a></p>
       </form>
