@@ -8,7 +8,6 @@
     
         <!-- Mobile Metas -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    
         <!-- Site Metas -->
         <title>{{submission.name}}</title>
         <meta name="keywords" content="">
@@ -16,9 +15,10 @@
         <meta name="author" content="">
     
         <!-- Site Icons -->
-        <link rel="shortcut icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" type="image/x-icon">
-        <link rel="apple-touch-icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png">
-    
+        <link rel="shortcut icon" href="https://res.cloudinary.com/dib0peewu/image/upload/v1715351850/newIcon_wzxlaj.png" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://res.cloudinary.com/dib0peewu/image/upload/v1715351850/newIcon_wzxlaj.png">
+        <!-- CSS -->
+        <link rel="stylesheet" href="">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ static('css/bootstrap.min.css') }}">
       <!-- Site CSS -->
@@ -27,27 +27,738 @@
         <link rel="stylesheet" href="{{ static('css/responsive.css') }}">
       <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ static('css/custom.css') }}">
-
+<!--  #4ED7FC #ff0f7b
+ #38A8C7 #f89b29 -->
        <style>
+            :root {
+              --shadow-color:#38A8C7  ;
+              --shadow-color-light:#4ED7FC ;
+            }
             html{
                 scroll-behavior: smooth;
             }
+            .aboutImage{
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              margin-left: 5%;
+              display: block;
+              justify-content: center;
+              align-items: center;
+              scale:1.1;
+            }
+            
+            .navbar-header{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 120px;
+                z-index: 1000;
+            }
+            .nav-item{
+                color: white;
+            }
+            .nav li{
+              display: flex;
+              gap:0;
+            }
+            nav.navbar.bootsnav ul.nav > li > a{
+              position:absolute;
+              top: -500%;
+            }
+            .text-nav{
+              display:flex;
+              align-items:center;
+              margin-right: 10px;
+              height: 60px;
+            }
+            
+            .text-nav:hover{
+              color: #005E78;
+            }
+            a{
+              text-decoration:none;
+              color:inherit;
+             }
+             a:hover{
+              text-decoration:none;
+              color:inherit;
+             }
+             .type1 {
+               height: 50px;
+               width: 150px;
+               position: relative;
+               background-color: transparent;
+               cursor: pointer;
+               border: 2px solid #005E78;
+               overflow: hidden;
+               border-radius: 30px;
+               
+               transition: all 0.1s ease-in-out;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+               margin:5px;
+             }
+            
+             
+             .btn-txt {
+               z-index: 1;
+               font-weight: 800;
+               letter-spacing: 4px;
+             }
+             
+             .type1::after {
+               content: "";
+               position: absolute;
+               left: 0;
+               top: 0;
+               transition: all 0.5s ease-in-out;
+               background-color: #005E78;
+               border-radius: 30px;
+               visibility: hidden;
+               height: 10px;
+               width: 10px;
+               z-index: -1;
+             }
+             
+             .type1:hover {
+               color: white;
+               border: black;
+             }
+             
+             .type1:hover::after {
+               visibility: visible;
+               transform: scale(100) translateX(2px);
+             }
+            
+            .register_button{
+              position: relative;
+              margin: 0;
+              padding: 0.8em 1em;
+              outline: none;
+              text-decoration: none;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              border: none;
+              text-transform: uppercase;
+              background-color: white;
+              border-radius: 10px;
+              color: #000;
+              font-weight: 300;
+              font-size: 18px;
+              font-family: inherit;
+              z-index: 0;
+              overflow: hidden;
+              transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+              font-weight: bold;
+            }
+            .register_button:hover{
+              animation: sh0 0.5s ease-in-out both;
+            }
+            @keyframes sh0 {
+              0% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+              }
+            
+              25% {
+                transform: rotate(7deg) translate3d(0, 0, 0);
+              }
+            
+              50% {
+                transform: rotate(-7deg) translate3d(0, 0, 0);
+              }
+            
+              75% {
+                transform: rotate(1deg) translate3d(0, 0, 0);
+              }
+            
+              100% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+              }
+            }
+            .register_button:hover span {
+              animation: storm 0.7s ease-in-out both;
+              animation-delay: 0.06s;
+            }
+            
+            .register_button::before,
+            .register_button::after {
+              content: '';
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              background: #000;
+              opacity: 0;
+              transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+              z-index: -1;
+              transform: translate(100%, -25%) translate3d(0, 0, 0);
+            }
+            
+            .register_button:hover::before,
+            .register_button:hover::after {
+              opacity: 0.15;
+              transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+            }
+            
+            .register_button:hover::before {
+              transform: translate3d(50%, 0, 0) scale(0.9);
+            }
+            
+            .register_button:hover::after {
+              transform: translate(50%, 0) scale(1.1);
+            }
+            .hero-text strong{
+              font-size: 3.5rem;
+              text-transform: uppercase;
+              height: auto;
+              text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+                0 0 3px var(--shadow-color-light),
+                0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color);
+            }
+            
+            .hero-text span{
+              font-size: 2rem;
+              color: white;
+              text-transform: uppercase;
+            }
+            .hero-desc{
+              font-size: 1rem;
+              
+            }
+            .slides-navigation a{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 10px;
+              width: 50px;
+              height: 50px;
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+            }
+            .slides-navigation:hover{
+              background-color: var(--shadow-color);
+            }
+            .slides-navigation a{
+              border-radius: 50%;
+            }
+
+            .slides-pagination a{
+              border-radius: 50%;
+              width: 15px;
+              height: 15px;
+            }
+            .slides-pagination a{
+              background-color: grey;
+              border: 1px solid grey;
+            }
+
+            .slides-pagination a.current{
+              background-color: var(--shadow-color);
+              border: 2px solid var(--shadow-color);
+            }
+
+            #about , #sponsors ,#timeline{
+              background-image: url("https://res.cloudinary.com/dib0peewu/image/upload/v1714123982/marble-2398946_1280_ju71zd.jpg");
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-attachment: fixed;
+              min-height: 560px;
+              height: 100%;
+            }
+
+            #about h1{
+              font-size: 3rem;
+            }
+
+            #about .container{
+              display: flex;
+              flex-direction: column;
+              gap: 5rem;
+              justify-content: space-evenly;
+              align-items: center;
+              min-height: 560px;
+              height: 100%;
+            }
+
+            #about .about-container{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 5%;
+              margin-top: 0%;
+            }
+            .aboutImage-container{
+              width: 400px;
+              height: 400px;  
+              object-fit: cover;
+              
+            }
+            .aboutImage{
+              aspect-ratio: 3/2;
+            }
+            .aboutText{
+              font-size: 1.5rem;
+              width: 50%;
+            }
+
+            #sponsors h1{
+              font-size: 3rem;
+            }
+
+            .sponsor-container{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 3rem;
+              flex-wrap: wrap;
+            }
+            .package {
+              width: 254px;
+              height: 200px;
+              background-image: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+              border-radius: 20px;
+              text-align: center;
+              transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+              z-index: 1;
+            }
+            
+            .package:hover {
+              box-shadow: 0px 0px 30px 1px var(--shadow-color-light);
+            }
+            
+            .package2 {
+              width: 254px;
+              height: 200px;
+              background-color: #fff;
+              border-radius: 10px;
+              transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+              padding: 15px;
+              cursor: pointer;
+            }
+            
+            .package2:hover {
+              transform: scale(0.98);
+              border-radius: 18px;
+            }
+            
+            .text {
+              color: white;
+              font-size: 17px;
+            }
+            
+
+            
+
+            .sponsor-img{
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+            .title-all p{
+              color: black;
+            }
+            
+
+            .registrations-start {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              max-width: 320px;
+              width: 100%;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+              padding: 32px;
+              border-radius: 10px;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+              background-color: white;
+              margin: 5%;
+            }
+            
+            .registrations-startcontent {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+              color: white;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            
+            .registrations-startcontent .registrations-startheading {
+              font-weight: 700;
+              font-size: 32px;
+            }
+            
+            .registrations-startcontent .registrations-startpara {
+              line-height: 1.5;
+              width: 100%;
+              text-align: center;
+            }
+            
+            .registrations-startcontent .registrations-startbtn {
+              color: #e8e8e8;
+              text-decoration: none;
+              padding: 10px;
+              font-weight: 600;
+              border: none;
+              cursor: default;
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+              border-radius: 5px;
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+              min-width: 100px;
+            }
+            
+            .registrations-start::before {
+              content: "";
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 5px;
+              height: 100%;
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+              z-index: -1;
+              transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            
+            .registrations-start:hover::before {
+              width: 100%;
+            }
+            
+            .registrations-start:hover {
+              box-shadow: none;
+            }
+            
+            .registrations-start:hover .registrations-startbtn {
+              color: #212121;
+              background: #e8e8e8;
+            }
+
+            
+            .registrations-startcontent .btn:active {
+              box-shadow: none;
+            }
+
+            .arrow-png{
+              position: absolute;
+              bottom: -100px;
+              left:-100px ;
+              transform: rotate(65deg);
+            }
+
+            .footer{
+              background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );
+            }
+            .footer-text{
+              color: white;
+            }
+
+            .footer:hover{
+               color: #005E78;
+            }
+            
+
+            
+
+
+
+
+            #back-to-top{
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              display: none;
+              background-color: #333;
+              padding-bottom: 10px;
+              color: white;
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            }
+            
+            .confetti {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              width: 300px;
+              height: 60%;
+              overflow: hidden;
+              z-index: 0;
+            }
+
+            .confetti-piece {
+              position: absolute;
+              width: 10px;
+              height: 20px;
+              background-color: hsl(39, 100%, 56%);
+              top: 0;
+              opacity: 0;
+              animation: makeItRain 3000ms infinite linear;
+            }
+
+            .confetti-piece:nth-child(1) {
+              left: 7%;
+              transform: rotate(-10deg);
+              animation-delay: 182ms;
+              animation-duration: 2000ms;
+            }
+
+            .confetti-piece:nth-child(2) {
+              left: 14%;
+              transform: rotate(20deg);
+              animation-delay: 161ms;
+              animation-duration: 2076ms;
+            }
+
+            .confetti-piece:nth-child(3) {
+              left: 21%;
+              transform: rotate(-51deg);
+              animation-delay: 481ms;
+              animation-duration: 2103ms;
+            }
+
+            .confetti-piece:nth-child(4) {
+              left: 28%;
+              transform: rotate(61deg);
+              animation-delay: 334ms;
+              animation-duration: 1008ms;
+            }
+
+            .confetti-piece:nth-child(5) {
+              left: 35%;
+              transform: rotate(-52deg);
+              animation-delay: 302ms;
+              animation-duration: 1776ms;
+            }
+
+            .confetti-piece:nth-child(6) {
+              left: 42%;
+              transform: rotate(38deg);
+              animation-delay: 180ms;
+              animation-duration: 1168ms;
+            }
+
+            .confetti-piece:nth-child(7) {
+              left: 49%;
+              transform: rotate(11deg);
+              animation-delay: 395ms;
+              animation-duration: 1200ms;
+            }
+
+            .confetti-piece:nth-child(8) {
+              left: 56%;
+              transform: rotate(49deg);
+              animation-delay: 14ms;
+              animation-duration: 1887ms;
+            }
+
+            .confetti-piece:nth-child(9) {
+              left: 63%;
+              transform: rotate(-72deg);
+              animation-delay: 149ms;
+              animation-duration: 1805ms;
+            }
+
+            .confetti-piece:nth-child(10) {
+              left: 70%;
+              transform: rotate(10deg);
+              animation-delay: 351ms;
+              animation-duration: 2059ms;
+            }
+
+            .confetti-piece:nth-child(11) {
+              left: 77%;
+              transform: rotate(4deg);
+              animation-delay: 307ms;
+              animation-duration: 1132ms;
+            }
+
+            .confetti-piece:nth-child(12) {
+              left: 84%;
+              transform: rotate(42deg);
+              animation-delay: 464ms;
+              animation-duration: 1776ms;
+            }
+
+            .confetti-piece:nth-child(13) {
+              left: 91%;
+              transform: rotate(-72deg);
+              animation-delay: 429ms;
+              animation-duration: 1818ms;
+            }
+
+            .confetti-piece:nth-child(14) {
+              left: 94%;
+              transform: rotate(-72deg);
+              animation-delay: 429ms;
+              animation-duration: 818ms;
+            }
+
+            .confetti-piece:nth-child(15) {
+              left: 96%;
+              transform: rotate(-72deg);
+              animation-delay: 429ms;
+              animation-duration: 2818ms;
+            }
+
+            .confetti-piece:nth-child(16) {
+              left: 98%;
+              transform: rotate(-72deg);
+              animation-delay: 429ms;
+              animation-duration: 2818ms;
+            }
+
+            .confetti-piece:nth-child(17) {
+              left: 50%;
+              transform: rotate(-72deg);
+              animation-delay: 429ms;
+              animation-duration: 2818ms;
+            }
+
+            .confetti-piece:nth-child(18) {
+              left: 60%;
+              transform: rotate(-72deg);
+              animation-delay: 429ms;
+              animation-duration: 1818ms;
+            }
+
+            .confetti-piece:nth-child(odd) {
+              background-color: hsl(0, 100%, 67%);
+            }
+
+            .confetti-piece:nth-child(even) {
+              z-index: 1;
+            }
+
+            .confetti-piece:nth-child(4n) {
+              width: 6px;
+              height: 14px;
+              animation-duration: 4000ms;
+              background-color: #c33764;
+            }
+
+            .confetti-piece:nth-child(5n) {
+              width: 3px;
+              height: 10px;
+              animation-duration: 4000ms;
+              background-color: #b06ab3;
+            }
+
+            .confetti-piece:nth-child(3n) {
+              width: 4px;
+              height: 12px;
+              animation-duration: 2500ms;
+              animation-delay: 3000ms;
+              background-color: #dd2476;
+            }
+
+            .confetti-piece:nth-child(3n-7) {
+              background-color: hsl(166, 100%, 37%);
+            }
+
+            @keyframes makeItRain {
+              from {
+                opacity: 0;
+              }
+
+              50% {
+                opacity: 1;
+              }
+
+              to {
+                transform: translateY(250px);
+              }
+            }
+
+            #back-to-top:hover{
+              background-color: #005E78;
+            }
+
+            @media screen and (max-width: 992px) {
+              .navbar .container{
+                display: flex;
+                justify-content: space-between;
+                width: 90vw;
+                transform: translateY(-25px);
+              }
+              .nav.navbar.bootsnav .navbar-nav > li > a{
+                border: none;
+              }
+              nav.navbar.bootsnav .navbar-nav > li{
+                margin-bottom: 10px;
+              }
+              .navbar .nav-item{
+                background-color: black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                border-radius: 20px;
+              }
+              .type1{
+                border:none;
+              }
+              .navbar-toggler{
+                position: fixed;
+                right: 10%;
+              }
+              .navbar-toggler:not(:disabled){
+                top: 40%;
+              }
+              
+              
+              
+            }
+
             @media screen and (max-width: 800px) {
                 .aboutImage{
                     display: none;
                 }
-            }
-            @media screen and (min-width: 800px) {
-                .aboutText{
-                    margin-top: 10%;
+                .aboutImage-container{
+                  display: none;
                 }
+                .aboutText{
+                    width: 100%;
+                    text-align: center;
+                }
+                .type1{
+                  border:none;
+                }
+                .type1:hover{
+                  color: #005E78;
+                }
+                
+                
             }
             @media screen and (max-width: 500px) {
                 .importantInfo{
                     flex-direction: column;
                 }
+                .aboutText{
+                    width: 100%;
+                }
+                .arrow-png{
+                  bottom: -100px;
+                  left:-30px ;
+                  transform: rotate(65deg);
+                  z-index: 100;
+                }
+                
             }
-
+            @media screen and (max-width: 360px){
+              
+            }
+            
         </style>
     
     
@@ -55,32 +766,55 @@
     
     <body>
         <!-- Start Main Top -->
-        <header class="main-header">
+        <header class="main-header" >
             <!-- Start Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-                <div class="container">
+            <nav class="navbar navbar-expand-lg  navbar-default bootsnav" id="nav" style="height:120px; background: linear-gradient(-45deg, var(--shadow-color-light) 0%, var(--shadow-color) 100% );">
+                <div class="container" >
                     <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                        <a class="navbar-brand" href="https://www.innogeeks.in"><img src="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" class="logo" alt="" style="width: 250px;height: 80px;"></a>
+                    <div class="navbar-brand">
+                      <a  href="https://www.innogeeks.in"><img src="https://template-mail-images.s3.ap-south-1.amazonaws.com/inno+logo+(3).png" class="logo" alt="" style="width: 150px;height: 100%;"></a>
                     </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <img class="nav-burger" src="https://res.cloudinary.com/dib0peewu/image/upload/v1715341782/hamburger-svgrepo-com_fpkesu.png" alt="" style="width: 100%;height: 25px;">
+                      </button>
+                    
                     <!-- End Header Navigation -->
     
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                          
+                          {% if user.username %}
+                          <li class="nav-item">
+                           <p class="text-nav">
+                            <a href="/user/dashboard">
+                              <!-- <span class="btn-txt">User {{user.username}}</span> -->
+                              <span class="btn-txt">Dashboard</span>
+                            <a/>
+                          </p>
+                          </li>
                           {% if (not registered) %}
                           <li class="nav-item">
-                            <a class="nav-link" href="/event/register/{{submission.name}}">Register</a>
+                            <p class="type1">
+                              <a href="/event/register/{{submission.name}}">
+                                <span class="btn-txt">Register</span>
+                              <a/>
+                            </p>
                           </li>
                           {% endif %}
-                          {% if user.username %}
-                          <li class="nav-item"><a class="nav-link" href="/user/dashboard">User {{user.username}}</a></li>
-                          <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+                          <li class="nav-item">
+                            <p class="type1">
+                              <a href="/user/logout">
+                                <span class="btn-txt">Logout</span>
+                              <a/>
+                          </li>
                           {% else %}
-                          <li class="nav-item"><a class="nav-link" href="/user/login">Login</a></li>
+                          <li class="nav-item">
+                            <p class="type1">
+                              <a href="/user/login">
+                                <span class="btn-txt">Login</span>
+                              <a/>
+                          </li>
                           {% endif %}
                         </ul>
                       </div> 
@@ -110,17 +844,28 @@
                     <img src={{i}} alt="">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>{{submission.name}} <br> by Innogeeks</strong></h1>
-                                <p class="m-b-40">{{submission.shortDesc}}</p>
+                            <div class="col-md-12" style="
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        ">
+                                <p class="hero-text">
+                                  <strong>{{submission.name}} <br> 
+                                    <span> By Innogeeks</span>
+                                  </strong>
+                                </p>
+                                <p class="m-b-40 hero-desc" style="color:white">{{submission.shortDesc}}</p>
                                 {% if registered %}
                                 <p>
-                                    <p class="btn hvr-hover">Already Registered</p>
+                                  <button class="register_button">
+                                    <span>Already Registered</span>
+                                  </button>
                                   {% else %}
-                                  <a class="btn hvr-hover" href="/event/register/{{submission.name}}"
-                                    >Register Now</a
-                                  >
-                                  </p>
+                                  <a href="/event/register/{{submission.name}}">
+                                  <button class="register_button">
+                                    <span>Register Now</span>
+                                  </button>
+                                </a>
                                   {% endif %}
                             </div>
                         </div>
@@ -134,47 +879,118 @@
             </div>
         </div>
         <!-- End Slider -->
-    
+
         <!-- Start Categories  -->
         <div class="categories-shop" id="about">
             <div class="container">
-                <center><h1 style="margin-bottom: 2%;"><strong>About {{submission.name}}</strong></h1></center> 
-                <div style="display: flex;">
-                    <p class="aboutText" style="overflow-wrap: break-word; word-break: break-word; text-align: justify; margin-right: 5%;">{{submission.message}}</p>
-                    <img class="aboutImage" src={{aboutImage}} alt="">
+                <center>
+                  <h1 style="margin-bottom: 2%;"><strong>About {{submission.name}}</strong></h1>
+                </center> 
+                <div class="about-container" style="display: flex;">
+                    <p class="aboutText" style="overflow-wrap: break-word; word-break: break-word; text-align: justify; ">{{submission.message}}</p>
+                    <div class="aboutImage-container">
+                      <img class="aboutImage" src={{aboutImage}} alt="">
+                    </div>
+
                 </div>
             </div>
         </div>
         <!-- End Categories -->
         
-
+        <!-- Start Sponsors -->
         {% if sponsors %}
-        <div class="box-add-products">
+        <div class="box-add-products" id="sponsors">
             <div class="container">
-                <center><h1 style="margin-bottom: 5%;"><strong>OUR SPONSORS</strong></h1></center> 
-                <center><div class="row" style="display: flex; justify-content: center; align-items: center;">
+              
+              <center><h1 style="margin-bottom: 5%;"><strong>OUR SPONSORS</strong></h1></center> 
+              <center><div class="row" style="display: flex; justify-content: center; align-items: center; gap:3rem ; flex-wrap:wrap ; max-width:80vw;";>
+                  <div class="confetti">
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                    <div class="confetti-piece"></div>
+                  </div>
+                  <div class="sponsor-container">
                     {% for i in sponsors %}
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                                <img class="img-fluid" src={{i}} alt="sponsors" style="width: 50%; margin: 5%;"/>
-                        </div>
-                    {% endfor %}
+                          <div class="package">
+                            <div class="package2">
+                              <img class="sponsor-img" src={{i}} alt="">
+                            </div>
+                          </div>
+                          {% endfor %}
+                  </div>
                 </div></center>
             </div>
         </div>
         {% endif %}
+        <!-- End Sponsors -->
     
-    
-        <!-- Start Blog  -->
-        <div class="latest-blog">
+        <!-- Start Timeline  -->
+        <div class="latest-blog" id="timeline">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="title-all text-center">
                             <h1>Important Information</h1>
                             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations start</h3><br>{{submission.start_date}}</center></div>
+                               <!--<div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations start</h3><br>{{submission.start_date}}</center></div>
                                 <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Registrations ends</h3><br>{{submission.end_date}}</center></div>
-                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Total Number of Registrations</h3><br>{{registration_count}}</center></div>
+                                <div style="background-color: rgb(200, 201, 202); border-radius: 10px; padding: 3%; margin: 2%; width: 30%; height: 10%;"><center><h3>Total Number of Registrations</h3><br>{{registration_count}}</center></div> -->
+                                
+                                <div class="registrations-start">
+                                  <div class="registrations-startcontent">
+                                    <p class="registrations-startheading">
+                                      Registrations Start
+                                    </p>
+                                    <p class="registrations-startpara">
+                                      
+                                    </p>
+                                    <button class="registrations-startbtn">{{submission.start_date}}</button>
+                                  </div>
+                                  <div class="arrow-png">
+                                    <img src="https://res.cloudinary.com/dib0peewu/image/upload/v1714141665/scribble-removebg-preview_z8yhjg.png" width="120px" alt="arrow-png" />
+                                  </div>
+                                </div>
+                                <div class="registrations-start">
+                                  <div class="registrations-startcontent">
+                                    <p class="registrations-startheading">
+                                      Registrations End
+                                    </p>
+                                    <p class="registrations-startpara">
+                                      
+                                    </p>
+                                    <button class="registrations-startbtn">{{submission.end_date}}</button>
+                                  </div>
+                                  <div class="arrow-png">
+                                    <img src="https://res.cloudinary.com/dib0peewu/image/upload/v1714141665/scribble-removebg-preview_z8yhjg.png" width="120px" alt="arrow-png" />
+                                  </div>
+                                </div>
+                                <div class="registrations-start">
+                                  <div class="registrations-startcontent">
+                                    <p class="registrations-startheading">
+                                      Total Number of Registrations
+                                    </p>
+                                    
+                                    <button class="registrations-startbtn">{{registration_count}}</button>
+                                  </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -182,18 +998,123 @@
                     
             </div>
         </div>
-        <!-- End Blog  -->
+        <!-- End Timeline  -->
+        
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start  text-muted footer">
+            <!-- Section: Links  -->
+            <section class="text-light">
+              <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-l g-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <div style="height: 200px; overflow: hidden; object-fit: cover; margin-top:-100px;">
+                        <a class="navbar-brand" href="https://www.innogeeks.in">
+                            <img src="https://template-mail-images.s3.ap-south-1.amazonaws.com/inno+logo+(3).png" class="logo" alt="" style="width: 250px;height: 100%;">
+                        </a>
+                    </div>
+                    <p  style="color:white;">
+                        {{submission.shortDesc}}
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+          
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" >
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4 footer-text ">
+                        Useful links
+                    </h6>
+                    <p>
+                      <a href="#slides-shop" class="text-reset footer-text ">Home</a>
+                    </p>
+                    <p>
+                      <a href="#about" class="text-reset footer-text " >About</a>
+                    </p>
+                    <p>
+                      <a href="#sponsors" class="text-reset footer-text ">Sponsors</a>
+                    </p>
+                    <p>
+                      <a href="#timeline" class="text-reset footer-text ">Timeline</a>
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+          
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4 footer-text ">
+                      More Events
+                    </h6>
+                    <p>
+                      <a href="https://innohacks.live/" class="text-reset footer-text ">Innohacks</a>
+                    </p>
+                    <p>
+                      <a href="https://iwoc.codes/" class="text-reset footer-text ">Iwoc</a>
+                    </p>
+                    <p>
+                      <a href="https://coderspree.netlify.app/" class="text-reset footer-text ">Coderspree</a>
+                    </p>
+                    <p>
+                      ...many More
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+          
+                  <!-- Grid column -->
+                  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4 footer-text ">Contact Us</h6>
+                    <p ><i class="fas fa-home me-3" style="margin-right:10px;"></i><span>KIET Group Of Institution</span> </p>
+                    <p>
+                      <i class="fas fa-envelope me-3" style="margin-right:10px;"></i>
+                      innogeeks@kiet.edu
+                    </p>
+                    <p><i class="fas fa-phone me-3" style="margin-right:10px;"></i>+91 9808989898</p>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+              </div>
+            </section>
+            <!-- Section: Links  -->
+          
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+              © 2024 Copyright:
+              <a class="text-reset fw-bold" href="https://innogeeks.in/" style="color:">innogeeks.in</a>
+            </div>
+            <!-- End copyright  -->
+        </footer>
+        <!-- Footer -->
     
-        <!-- Start copyright  -->
-        <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. &copy; 2023 Made with ❤️ by:
-                <a href="https://innogeeks.in">Team Innogeeks</a></p>
-        </div>
-        <!-- End copyright  -->
-    
-        <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+        
+        <button id="back-to-top">
+          <a href="#hero" ><span>&uarr;</span></a>
+        </button>
     
         <!-- ALL JS FILES -->
+        <script>
+          var navbarToggler = document.querySelector('.navbar-toggler');
+          var navbarTogglerLogo = document.querySelector('.nav-burger');
+
+          navbarToggler.addEventListener('click', function() {
+              if (navbarToggler.getAttribute('aria-expanded') === "true") {
+                  navbarTogglerLogo.src = 'https://res.cloudinary.com/dib0peewu/image/upload/v1715341782/hamburger-svgrepo-com_fpkesu.png';
+                  
+                  navbarToggler.style.transform = 'none';
+              } else {
+                  navbarTogglerLogo.src = 'https://res.cloudinary.com/dib0peewu/image/upload/v1715341553/cross-svgrepo-com_1_hltcpk.png';
+                  
+                  navbarTogglerLogo.style.height = '20px';
+
+                  navbarToggler.style.transform = 'translateY(-30px)';
+              }
+          });     
+        </script>
         <script src="{{ static('js/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ static('js/popper.min.js') }}"></script>
         <script src="{{ static('js/bootstrap.min.js') }}"></script>
