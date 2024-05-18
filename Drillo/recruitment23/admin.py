@@ -29,29 +29,29 @@ class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     fields = ['name', 'email_personal', 'email_kiet', 'library_id', 'contact_no',
               'day_scholar_hosteller', 'gender', 'branch', 'payment_mode', 'desk', 'date', 'payment_status', 'recruitment_mail']
 
-    list_display = ('name', 'payment_status', 'recruitment_mail','email_kiet', 'contact_no', 'id')
+    list_display = ('name', 'payment_status', 'recruitment_mail', 'interview_mail', 'email_kiet', 'contact_no', 'id')
 
     list_per_page = 80
 
-    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode' ,'payment_status', 'date', 'recruitment_mail')
+    list_filter = ('gender', 'day_scholar_hosteller', 'desk', 'payment_mode' ,'payment_status', 'date', 'recruitment_mail', 'interview_mail')
 
     search_fields = ('email_personal', 'email_kiet',
                      'name', 'contact_no', 'library_id')
 
     ordering = ('name', 'id')
 
-    actions = ["send_confirmation_mail",
-                "send_test_slot_mail",
+    actions = ["send_interview_mail"]
 
-                "send_day4_slot1_lab1_mail_adv",
-                "send_day4_slot1_lab2_mail_adv",
-                "send_day4_slot1_lab3_mail", 
-                "send_day4_slot1_lab4_mail",
-
-                "send_day4_slot2_lab1_mail", 
-                "send_day4_slot2_lab2_mail", 
-                "send_day4_slot2_lab3_mail", 
-                "send_day4_slot2_lab4_mail", ]
+    def send_interview_mail(self, request, queryset):
+        connection = mail.get_connection()
+        for i in queryset:
+            if i.email_personal:
+                connection.open()
+                message= render_to_string('interview.html')
+                send_html_mail('Innogeeks Recruitment | Interview',message, [i.email_personal])
+                connection.close()
+                queryset.update(interview_mail=True)
+    send_interview_mail.short_description = "Send interview email"
    
 
     def send_confirmation_mail(self, request, queryset):
@@ -69,6 +69,8 @@ class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         connection.close()
         queryset.update(payment_status=True)
     send_confirmation_mail.short_description = "Send an email for due paymemt"
+
+
 
     def send_test_slot_mail(self, request, queryset):
         connection = mail.get_connection()
