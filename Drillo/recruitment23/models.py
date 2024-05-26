@@ -19,6 +19,7 @@ class recruitments(models.Model):
     date = models.DateTimeField(default=date.today)
     payment_status = models.BooleanField(default=False)
     recruitment_mail=models.BooleanField(default=False)
+    interview_mail=models.BooleanField(default=False)
 
     def _str_(self):
         return self.name
