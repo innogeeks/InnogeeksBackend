@@ -1,473 +1,270 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Innogeeks Recruitment</title>
-        <link rel="icon" type="image/x-icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/favicon/favicon.ico">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-          tailwind.config = {
-            theme: {
-              extend: {
-                colors: {
-                  clifford: '#da373d',
-                }
-              }
-            }
-          }
-        </script>
-    </head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<html lang="en">
 
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-
-.formbold-main-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px;
-}
-
-.formbold-form-wrapper {
-  margin: 0 auto;
-  max-width: 570px;
-  width: 100%;
-  background: white;
-  padding: 40px;
-}
-
-.formbold-form-img {
-  margin-bottom: 45px;
-}
-
-.formbold-input-group {
-  margin-bottom: 18px;
-}
-
-.formbold-form-select {
-  width: 100%;
-  padding: 12px 22px;
-  border-radius: 5px;
-  border: 1px solid #dde3ec;
-  background: #ffffff;
-  font-size: 16px;
-  color: #536387;
-  outline: none;
-  resize: none;
-}
-
-.formbold-input-radio-wrapper {
-  margin-bottom: 25px;
-}
-.formbold-radio-flex {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.formbold-radio-label {
-  font-size: 14px;
-  line-height: 24px;
-  color: #07074d;
-  position: relative;
-  padding-left: 25px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.formbold-input-radio {
-  /* position: absolute; */
-  opacity: 1;
-  cursor: pointer;
-}
-/* .logo{
-  
-} */
-.formbold-radio-checkmark {
-  position: absolute;
-  top: -1px;
-  left: 22px;
-  height: 18px;
-  width: 18px;
-  background-color: rgb(235, 232, 232);
-  border: 1px solid #dde3ec;
-  border-radius: 50%;
-}
-.formbold-radio-label
-  .formbold-input-radio:checked
-  ~ .formbold-radio-checkmark {
-  background-color: #6a64f1;
-}
-.formbold-radio-checkmark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-.formbold-radio-label
-  .formbold-input-radio:checked
-  ~ .formbold-radio-checkmark:after {
-  display: block;
-}
-
-.formbold-radio-label .formbold-radio-checkmark:after {
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ffffff;
-  transform: translate(-50%, -50%);
-}
-
-.formbold-form-input {
-  width: 100%;
-  padding: 13px 22px;
-  border-radius: 5px;
-  border: 1px solid #dde3ec;
-  background: #ffffff;
-  font-weight: 500;
-  font-size: 16px;
-  color: #07074d;
-  outline: none;
-  resize: none;
-}
-.formbold-form-input::placeholder {
-  color: #536387;
-}
-.formbold-form-input:focus {
-  border-color: #6a64f1;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-}
-.formbold-form-label {
-  color: #07074d;
-  font-size: 14px;
-  line-height: 24px;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.btn {
-    border: none;
-    width: 10em;
-    height: 3em;
-    border-radius: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    background: #1C1A1C;
-    cursor: pointer;
-    transition: all 450ms ease-in-out;
-  }
-  
-  .sparkle {
-    fill: #AAAAAA;
-    transition: all 800ms ease;
-  }
-  
-  .text {
-    font-weight: 600;
-    color: #AAAAAA;
-    font-size: medium;
-  }
-  
-  .btn:hover {
-    background: linear-gradient(0deg,#A47CF3,#683FEA);
-    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
-    inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
-    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
-    0px 0px 50px 0px #9a17ffbf;
-    transform: translateY(-2px);
-    animation: wind 2s ease-in-out infinite;
-  }
-  
-  .btn:hover .text {
-    color: white;
-  }
-  
-  .btn:hover .sparkle {
-    fill: white;
-    transform: scale(1.2);
-  } 
-
-span{
-    color: orangered;
-}
-
-
-@keyframes wind {
-    0% {
-      background-position: 0% 50%;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innogeeks Recruitment</title>
+  <link rel="shortcut icon" href="https://innogeeks24.s3.ap-south-1.amazonaws.com/Innogeeks_logo-removebg-preview.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,
+    body {
+      width: 100vw;
+      overflow-x: hidden;
     }
-  
-    0% {
-      background-position: 50% 100%;
+
+    body {
+      background-color: black;
     }
-  
-    0% {
-      background-position: 0% 50%;
+
+    .formbold-form-select {
+      width: 100%;
+      background: #000;
+      outline: none;
+      resize: none;
+      font-size: 0.9em;
+      color: white;
+      font-weight: 400;
+      padding: 15px 10px 20px 10px;
+      outline: 0;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      border-radius: 10px;
     }
-  }
-  
-  .icon-1 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 25px;
-    transform-origin: 0 0;
-    transform: rotate(10deg);
-    transition: all .5s ease-in-out;
-    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
-  }
-  
-  button:hover .icon-1 {
-    animation: slay-1 3s cubic-bezier(0.52, 0, 0.58, 1) infinite;
-    transform: rotate(10deg);
-  }
-  
-  @keyframes slay-1 {
-    0% {
-      transform: rotate(10deg);
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      position: relative;
+      min-width: 400px;
     }
-  
-    50% {
-      transform: rotate(-5deg);
+
+    .title {
+      font-size: 20px;
+      color: #1AA7CA;
+      font-weight: 600;
+      letter-spacing: -1px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
     }
-  
-    100% {
-      transform: rotate(10deg);
+
+    .title::before,
+    .title::after {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      left: 0px;
+      background-color: #2CD6FF;
+      z-index: 10000;
     }
-  }
-  
-  .icon-2 {
-    position: absolute;
-    top: 0;
-    left: 25px;
-    width: 12px;
-    transform-origin: 50% 0;
-    transform: rotate(10deg);
-    transition: all 1s ease-in-out;
-    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
-  }
-  
-  button:hover .icon-2 {
-    animation: slay-2 3s cubic-bezier(0.52, 0, 0.58, 1) 1s infinite;
-    transform: rotate(0);
-  }
-  
-  @keyframes slay-2 {
-    0% {
-      transform: rotate(0deg);
+
+    .title::before {
+      width: 14px;
+      height: 14px;
+      background-color: #1AA7CA;
+      z-index: 1000;
+
     }
-  
-    50% {
-      transform: rotate(15deg);
+
+    .title::after {
+      width: 14px;
+      height: 14px;
+      animation: pulse 1s linear infinite;
+      z-index: 1000;
     }
-  
-    100% {
-      transform: rotate(0);
+
+    .flex {
+      display: flex;
+      gap: 6px;
     }
-  }
-  
-  .icon-3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 18px;
-    transform-origin: 50% 0;
-    transform: rotate(-5deg);
-    transition: all 1s ease-in-out;
-    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
-  }
-  
-  button:hover .icon-3 {
-    animation: slay-3 2s cubic-bezier(0.52, 0, 0.58, 1) 1s infinite;
-    transform: rotate(0);
-  }
-  
-  @keyframes slay-3 {
-    0% {
-      transform: rotate(0deg);
+
+    .form label {
+      position: relative;
     }
-  
-    50% {
-      transform: rotate(-5deg);
+
+    .form label .input {
+      width: 100%;
+      padding: 10px 10px 20px 10px;
+      outline: 0;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      border-radius: 10px;
     }
-  
-    100% {
-      transform: rotate(0);
+
+    .form label .input+span {
+      position: absolute;
+      left: 10px;
+      top: 15px;
+      color: white;
+      font-size: 0.9em;
+      cursor: text;
+      transition: 0.3s ease;
     }
-  }
-    </style>
-    <body>
-      {% for message in messages %}
-      <div class="alert">
-      <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 my-2 rounded relative" roles="alert">
-        <p class="text-center"><strong class="font-bold">Message</strong>
-          <span class="block sm:inline"> {{message}}</span></p>
-          <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-          </span>
-      </div>
+
+    .form label .input:placeholder-shown+span {
+      top: 15px;
+      font-size: 0.9em;
+      color: white;
+    }
+
+    .form label .input {
+      font-size: 0.8em;
+    }
+
+    .form label .input::placeholder {
+      color: #fff;
+    }
+
+    .form label .input:focus+span,
+    .form label .input:valid+span {
+      top: 30px;
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+
+    /* For Chrome, Safari, Edge, and Opera */
+    input {
+      background-color: black;
+      color: white;
+    }
+
+
+
+    @keyframes pulse {
+      from {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width:500px) {
+      .form {
+        min-width: 90vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  {% for message in messages %}
+  <div class="alert absolute top-3 right-3">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 my-2 rounded relative" roles="alert">
+      <p class="text-center"><strong class="font-bold">Message</strong>
+        <span class="block sm:inline"> {{message}}</span>
+      </p>
+      <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20">
+          <title>Close</title>
+          <path
+            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+        </svg>
+      </span>
     </div>
-      {% endfor %}
-      
-        <div class="formbold-main-wrapper ">
-            <div class="formbold-form-wrapper shadow-2xl border-black rounded-3xl ">
-                <form class="space-y-3" action="/recruitment/submitted/" method="post">
-                  {{ csrf_input }}
-                  <div class="w-full mx-auto">
-                    <img  src="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/img/innologobright.png" class="logo w-9/12 mx-auto">
-                  </div>
-    
-                <!-- name  -->
-                <div class="formbold-input-group">
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    class="formbold-form-input"
-                    required
-                    name="Name"
-                  />
-                </div>
-    
-                <!-- personal email -->
-                <div class="formbold-input-group">
-                  <!-- <label for="email" class="formbold-form-label"> Personal-Email<span>*</span> </label> -->
-                  <input
-                    type="email"
-                    id="p-email"
-                    placeholder="Enter your personal-email"
-                    class="formbold-form-input"
-                    required
-                    name="Personal-Email"
-                  />
-                </div>
-    
-                 <!-- college email -->
-                <div class="formbold-input-group">
-                  <!-- <label for="email" class="formbold-form-label"> College-Email<span>*</span> </label> -->
-                  <input
-                    type="c-email"
-                    id="email"
-                    placeholder="Enter your college-email"
-                    class="formbold-form-input"
-                    required
-                    name="College-Email"
-                  />
-                </div>
-    
-                <!-- lib id -->
-                <div class="formbold-input-group">
-                  <!-- <label  class="formbold-form-label"> Library ID<span>*</span> </label> -->
-                  <input
-                    type="text"
-                    id="Library"
-                    placeholder="Enter your Library-ID"
-                    class="formbold-form-input"
-                    required
-                    name="Library-ID"
-                  />
-                </div>
-    
-                <!-- Contact no. -->
-                <div class="formbold-input-group">
-                    <!-- <label  class="formbold-form-label">Contact no.<span>*</span> </label> -->
-                    <input
-                      id="contact"
-                      type="number"
-                      placeholder="Enter your contact no."
-                      class="formbold-form-input"
-                      required
-                      name="Contact"
-                    />
-                  </div>
-          
-                  <!-- branch -->
-                  <div>
-                    <select class="formbold-form-select" name="Branch" id="branch" required>
-                      <option value="" hidden>Select Branch</option>
-                      <option value="CSE">CSE</option>
-                      <option value="IT">IT</option>
-                      <option value="CSIT">CSIT</option>
-                      <option value="CS">CS</option>
-                      <option value="CSE-AI">CSE-AI</option>
-                      <option value="CSE-AIML">CSE-AIML</option>
-                      <option value="ECE">ECE</option>
-                      <option value="EEE">EEE</option>
-                      <option value="ME">ME</option>
-                    </select>
-                  </div>
-    
-                  <!-- gender -->
-                  <div>
-                    <select class="formbold-form-select" name="Gender" id="gender" required>
-                      <option value="" hidden>Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </select>
-                  </div>
-    
-                <!-- payment mode -->
-                  <div>
-                    <select class="formbold-form-select" name="Payment" id="payment" required>
-                      <option value="" hidden>Select Payment Mode</option>
-                      <option value="Online">Online(UPI)</option>
-                      <option value="Cash">Cash</option>
-                    </select>
-                  </div>
-    
-    
-                <!-- Residency -->
-                <div>
-                  <select class="formbold-form-select" name="Residence" id="residence" required>
-                    <option value="" hidden>Residence</option>
-                    <option value="Hosteller">Hosteller</option>
-                    <option value="Day Scholar">Day Scholar</option>
-                  </select>
-                </div>
-    
-    
-                <!-- desk  -->
-                <div>
-                  <select class="formbold-form-select" name="Desk" id="desk" required>
-                    <option value="" hidden>Select Desk</option>
-                    <option value="G block">G Block</option>
-                    <option value="Cafet">Cafeteria</option>
-                    <option value="Mech">Mechanical Block</option>
-                    <option value="TBI">TBI</option>
-                  </select>
-                </div>
+  </div>
+  {% endfor %}
+
+  <div class="w-screen flex justify-center item-center min-h-screen">
+    <div class="relative">
+      <form class="form bg-gray-100/40 relative pt-10 my-14" method="POST" action="/recruitment/submitted/">
+        {{ csrf_input }}
+        <div class="h-24 w-full overflow-hidden">
+          <img src="https://innogeeks24.s3.ap-south-1.amazonaws.com/inno+logo_20240921_172421_0000.png"
+            class="w-full h-full object-cover bg-center" alt="">
+        </div>
+        <label>
+          <input required="" name="Name" placeholder="Enter your name" type="text"
+            class="w-full bg-black text-gray-200 border-0 rounded-md p-2 mb-4 focus:black focus:outline-none focus:ring-1 focus:ring-[#1AA7CA] transition ease-in-out duration-150">
+        </label>
+
+        <label>
+          <input required="" name="Personal-Email" placeholder="Enter your personal-email" type="email"
+            class="w-full bg-black text-gray-200 border-0 rounded-md p-2 mb-4 focus:black focus:outline-none focus:ring-1 focus:ring-[#1AA7CA] transition ease-in-out duration-150">
+        </label>
+
+        <label>
+          <input required="" name="College-Email" placeholder="Enter your college-email" type="email"
+            class="w-full bg-black text-gray-200 border-0 rounded-md p-2 mb-4 focus:black focus:outline-none focus:ring-1 focus:ring-[#1AA7CA] transition ease-in-out duration-150">
+        </label>
+
+        <label>
+          <input required="" name="Library-ID" placeholder="Enter your Library-ID" type="text"
+            class="w-full bg-black text-gray-200 border-0 rounded-md p-2 mb-4 focus:black focus:outline-none focus:ring-1 focus:ring-[#1AA7CA] transition ease-in-out duration-150">
+        </label>
+
+        <label>
+          <input required="" name="Contact" placeholder="Enter you contact numbe" type="text"
+            class="w-full bg-black text-gray-200 border-0 rounded-md p-2 mb-4 focus:black focus:outline-none focus:ring-1 focus:ring-[#1AA7CA] transition ease-in-out duration-150">
+        </label>
+
+        <select class="formbold-form-select" name="Branch" id="branch" required>
+          <option value="" hidden>Select Branch</option>
+          <option value="CSE">CSE</option>
+          <option value="IT">IT</option>
+          <option value="CSIT">CSIT</option>
+          <option value="CS">CS</option>
+          <option value="CSE-AI">CSE-AI</option>
+          <option value="CSE-AIML">CSE-AIML</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="ME">ME</option>
+        </select>
+
+        <select class="formbold-form-select" name="Gender" id="branch" required>
+          <option value="" hidden>Select Gender</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+
+        <select class="formbold-form-select" name="Payment" id="Payment" required>
+          <option value="" hidden>Select Payment Mode</option>
+          <option value="Online(UPI)">Online(UPI)</option>
+          <option value="Cash">Cash</option>
+        </select>
+
+        <select class="formbold-form-select" name="Residence" id="Residence" required>
+          <option value="" hidden>Residence</option>
+          <option value="Online(UPI)">Hosteller</option>
+          <option value="Cash">Day Scholar</option>
+        </select>
+
+        <select class="formbold-form-select" name="Desk" id="Desk" required>
+          <option value="" hidden>Select Desk</option>
+          <option value="G-Block">G-Block</option>
+          <option value="H-Block">H-Block</option>
+          <option value="B-Block">B-Block</option>
+          <option value="E-Block">E-Block</option>
+          <option value="C-Block">C-Block</option>
+          <option value="TBI">TBI</option>
+          <option value="Cafeteria">Cafeteria</option>
+
+        </select>
 
 
-    
-                <!-- submit button -->
-                <button class="btn mx-auto" type="submit">
-                    <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
-                        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-                    </svg>
-                    <span class="text">Submit</span>
-                </button>
-              </form>
-            </div>
-          </div>
-    
-    </body>
-    </html>
+        <!-- <button class="submit">Submit</button> -->
+        <button type="submit"
+          class="group flex justify-center items-center gap-2 group-hover:before:duration-500 group-hover:after:duration-500 after:duration-500 hover:border-neutral-900 hover:scale-90 duration-500 hover:duration-500 relative bg-neutral-900 px-10 py-4 border text-left p-3 text-gray-50 text-base font-bold rounded-lg overflow-hidden after:absolute after:z-10 after:w-12 after:h-12 after:content[''] after:bg-sky-900 after:-left-8 after:top-8 after:rounded-full after:blur-lg hover:after:animate-pulse">
+          <img src="https://innogeeks24.s3.ap-south-1.amazonaws.com/Innogeeks_logo-removebg-preview.png" class="w-7"
+            alt="">
+          Join Innogeeks
+        </button>
+
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

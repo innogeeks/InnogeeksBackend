@@ -2,13 +2,17 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
     <title>Error</title>
-    <link rel="icon" type="image/x-icon" href="https://innogeeksbucket.s3.ap-south-1.amazonaws.com/favicon/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://innogeeks24.s3.ap-south-1.amazonaws.com/Innogeeks_logo-removebg-preview.png">
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
     <style>
-      body {
-        text-align: center;
-        padding: 40px 0;
-        background: #EBF0F5;
+      .checkmark {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
         h1 {
           color: #ff0000;
@@ -25,18 +29,27 @@
         }
 
         img{
-            width: 80px;
-            height: 80px;
+            width: 150px;
+            height: 150px;
+        }
+
+        @media(max-width: 50px){
+         img{
+            width: 200px;
+            height: 200px;
+         }
         }
       
     </style>
     <body>
-        <div style="align-items: center;">
         <div class="checkmark">
-            <img src="https://cdn0.iconfinder.com/data/icons/shift-interfaces/32/Error-512.png" alt="">
-            <h1>Email Already Exists!!</h1> 
-            <a href="/recruitment">Go back to form</a>
-        </div>
+            <div class="w-[250px] h-[250px] md:w-[150px] md:h-[150px] overflow-hidden">
+              <img src="https://innogeeks24.s3.ap-south-1.amazonaws.com/bad-review.gif" class="w-full h-full object-cover" alt="">
+            </div>
+            <h1 class="text-6xl md:text-xl text-center">OOPs! Personal Email Already Exists</h1> 
+            <a href="/recruitment"
+            class="mt-10 text-center text-6xl md:text-xl border border-red-500 rounded-2xl p-2 text-red-500 whitespace-nowrap px-5 py-4 md:px-3 md:py-2 font-bold"
+            >Go back</a> 
         </div>
     </body>
 </html>
