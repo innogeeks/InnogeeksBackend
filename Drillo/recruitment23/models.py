@@ -12,7 +12,7 @@ class recruitments(models.Model):
     contact_no = models.CharField(max_length=15, null=False, blank=False)
     day_scholar_hosteller = models.CharField(
         max_length=15, null=False, blank=False)
-    gender = models.CharField(max_length=15, null=False, blank=False)
+    gender = models.CharField(max_length=50, null=False, blank=False)
     branch = models.CharField(max_length=15, null=False, blank=False)
     payment_mode = models.CharField(max_length=15, null=False, blank=False)
     desk = models.CharField(max_length=15, null=False, blank=False)

@@ -9,5 +9,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('event/', include('eventman.urls')),
     path('user/', include('user.urls')),
-    path('recruitment/', include('recruitment23.urls')),
+    path('', include('recruitment23.urls')),
 ]
