@@ -20,6 +20,8 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = os.environ.get('HOSTS').split(' ')
 
+print(ALLOWED_HOSTS)
+
 
 # Application definition
 
@@ -57,7 +59,11 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://13.235.134.84:8001'
+    'https://recruitment.innogeeks.in'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://recruitment.innogeeks.in'
 ]
 
 ROOT_URLCONF = 'drillo.urls'
