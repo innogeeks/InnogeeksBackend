@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 def forms(request):
     return render(request, 'recruitment23.html')
 
-
+@csrf_exempt
 def submit(request):
     if request.method == 'POST':
         name = request.POST.get("Name", "")
